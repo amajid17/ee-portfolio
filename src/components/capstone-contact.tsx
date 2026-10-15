@@ -7,7 +7,9 @@ import {
 import { PROFILE } from "../data";
 import { Reveal, SectionHeading } from "./chrome";
 
-/* ── Pipeline diagram ── */
+/* ─────────────────────────────────────────────
+   Pipeline diagram
+───────────────────────────────────────────── */
 function PipelineDiagram() {
   return (
     <div className="rounded-[14px] border border-[rgba(62,255,123,0.2)] bg-black/50 p-5 md:p-6 overflow-hidden">
@@ -46,9 +48,11 @@ function PipelineDiagram() {
             </path>
           </g>
         ))}
-        {/* offline node example */}
+
+        {/* Offline node indicator */}
         <rect x={4} y={192} width={62} height={22} rx="6"
-          fill="rgba(255,93,93,0.06)" stroke="rgba(255,93,93,0.3)" strokeWidth="1" strokeDasharray="4 3" />
+          fill="rgba(255,93,93,0.06)" stroke="rgba(255,93,93,0.3)" strokeWidth="1"
+          strokeDasharray="4 3" />
         <text x={35} y={206} textAnchor="middle" fill="#ff8a8a" fontSize="8"
           fontFamily="JetBrains Mono">TX? offline</text>
         <text x={35} y={22} textAnchor="middle" fill="#6b7f75" fontSize="8.5"
@@ -61,6 +65,7 @@ function PipelineDiagram() {
         </circle>
         <text x={160} y={141} textAnchor="middle" fill="#a8bab0" fontSize="9"
           fontFamily="JetBrains Mono">RX</text>
+
         {/* GPIO label */}
         <rect x={100} y={162} width={120} height={20} rx="5"
           fill="rgba(62,255,123,0.05)" stroke="rgba(62,255,123,0.18)" strokeWidth="1" />
@@ -73,30 +78,30 @@ function PipelineDiagram() {
         <text x={204} y={98} textAnchor="middle" fill="#6b7f75" fontSize="8"
           fontFamily="JetBrains Mono">USB</text>
 
-        {/* RPi box — two columns inside */}
+        {/* RPi box */}
         <rect x={224} y={30} width={168} height={152} rx="10"
           fill="#0e1a15" stroke="rgba(62,255,123,0.45)" strokeWidth="1.3" />
         <text x={308} y={50} textAnchor="middle" fill="#6b7f75" fontSize="8.5"
           fontFamily="JetBrains Mono">RASPBERRY Pi 5</text>
 
-        {/* Health monitor column */}
+        {/* Health monitor sub-column */}
         <rect x={232} y={58} width={68} height={110} rx="6"
           fill="rgba(255,93,93,0.04)" stroke="rgba(255,93,93,0.2)" strokeWidth="1" />
         <text x={266} y={72} textAnchor="middle" fill="#ff8a8a" fontSize="8"
           fontFamily="JetBrains Mono">HEALTH</text>
         {["heartbeat", "packet Δ", "telemetry", "power?"].map((t, i) => (
-          <text key={t} x={266} y={86 + i * 13} textAnchor="middle" fill="#6b7f75" fontSize="7.5"
-            fontFamily="JetBrains Mono">{t}</text>
+          <text key={t} x={266} y={86 + i * 13} textAnchor="middle" fill="#6b7f75"
+            fontSize="7.5" fontFamily="JetBrains Mono">{t}</text>
         ))}
 
-        {/* Pipeline column */}
+        {/* Signal pipeline sub-column */}
         <rect x={308} y={58} width={76} height={110} rx="6"
           fill="rgba(62,255,123,0.04)" stroke="rgba(62,255,123,0.2)" strokeWidth="1" />
         <text x={346} y={72} textAnchor="middle" fill="#3eff7b" fontSize="8"
           fontFamily="JetBrains Mono">PIPELINE</text>
         {["preprocess", "1D CNN", "correct", "verify"].map((t, i) => (
-          <text key={t} x={346} y={86 + i * 13} textAnchor="middle" fill="#a8bab0" fontSize="7.5"
-            fontFamily="JetBrains Mono">{t}</text>
+          <text key={t} x={346} y={86 + i * 13} textAnchor="middle" fill="#a8bab0"
+            fontSize="7.5" fontFamily="JetBrains Mono">{t}</text>
         ))}
 
         {/* → Dashboard */}
@@ -116,10 +121,10 @@ function PipelineDiagram() {
 
       <div className="mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
         {[
-          ["HEALTH", "Node status, packet gaps, power evidence"],
+          ["HEALTH",   "Node status, packet gaps, power evidence"],
           ["DIAGNOSE", "HW fault vs signal impairment"],
-          ["CORRECT", "Software fix only when recoverable"],
-          ["VERIFY", "Fresh CSI vs healthy baseline"],
+          ["CORRECT",  "Software fix only when recoverable"],
+          ["VERIFY",   "Fresh CSI vs healthy baseline"],
         ].map(([k, v]) => (
           <div key={k} className="rounded-[8px] border border-white/[0.07] bg-white/[0.02] px-2 py-2 text-center">
             <p className="font-mono2 text-[9px] tracking-[0.12em] text-[#3eff7b]">{k}</p>
@@ -131,9 +136,14 @@ function PipelineDiagram() {
   );
 }
 
-/* ── Three AI layers card ── */
+/* ─────────────────────────────────────────────
+   Three AI layers card
+   FIX: default collapsed so right column isn't
+   enormous on load; button label scoped to
+   "example" only since layers always visible.
+───────────────────────────────────────────── */
 function AILayersCard() {
-  const [expanded, setExpanded] = useState(true);
+  const [showExample, setShowExample] = useState(false);
 
   return (
     <div className="rounded-[14px] border border-white/[0.08] bg-[#0b1210] overflow-hidden">
@@ -142,14 +152,16 @@ function AILayersCard() {
           AI architecture · 3 layers
         </p>
         <button
-          onClick={() => setExpanded((v) => !v)}
-          className="font-mono2 text-[10px] text-[#3eff7b] hover:underline"
+          type="button"
+          onClick={() => setShowExample((v) => !v)}
+          className="font-mono2 text-[10px] text-[#3eff7b] hover:underline focus-visible:underline"
+          aria-expanded={showExample}
         >
-          {expanded ? "collapse" : "expand"}
+          {showExample ? "hide example" : "show example"}
         </button>
       </div>
 
-      {/* Layer stack */}
+      {/* Layer stack — always visible */}
       <div className="divide-y divide-white/[0.05]">
         {/* Layer 1 */}
         <div className="px-5 py-4 flex gap-3 items-start">
@@ -160,11 +172,12 @@ function AILayersCard() {
             <p className="text-[12.5px] font-semibold text-white">Signal processing</p>
             <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#6b7f75] mb-1">Measurement layer</p>
             <p className="text-[12px] leading-relaxed text-[#6b7f75]">
-              Parses CSI, aligns measurement windows, extracts features, detects movement,
+              Parses CSI by sender ID, aligns measurement windows, extracts amplitude,
+              phase-related, temporal, and packet-quality features, detects movement,
               and estimates supported signal impairments from raw samples.
             </p>
-            <div className="flex gap-1 mt-2">
-              {["Python", "NumPy", "SciPy"].map((t) => (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {["Python", "NumPy", "SciPy", "pandas"].map((t) => (
                 <span key={t} className="font-mono2 text-[9px] px-2 py-0.5 rounded border border-white/10 text-[#6b7f75]">{t}</span>
               ))}
             </div>
@@ -182,9 +195,10 @@ function AILayersCard() {
             <p className="text-[12px] leading-relaxed text-[#6b7f75]">
               A trained 1D CNN classifies CSI-related measurement faults. Rule-based health
               monitoring runs in parallel to detect offline nodes, missing telemetry, and
-              observable failures the CNN was not designed to handle.
+              observable hardware failures the CNN was not designed to handle. Both tracks
+              report structured evidence — neither authorizes corrections directly.
             </p>
-            <div className="flex gap-1 mt-2">
+            <div className="flex flex-wrap gap-1 mt-2">
               {["PyTorch", "scikit-learn", "diagnostic rules"].map((t) => (
                 <span key={t} className="font-mono2 text-[9px] px-2 py-0.5 rounded border border-white/10 text-[#6b7f75]">{t}</span>
               ))}
@@ -201,13 +215,13 @@ function AILayersCard() {
             <p className="text-[12.5px] font-semibold text-white">LLM intelligence</p>
             <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#6b7f75] mb-1">Natural-language layer · optional</p>
             <p className="text-[12px] leading-relaxed text-[#6b7f75]">
-              Receives structured diagnostic evidence from layers 1 and 2. Explains what was
-              observed, answers operator questions about system status, summarizes fault
-              incidents, and generates experiment reports — in plain language.
-              Does not invent telemetry, claim unconfirmed causes, or independently
-              authorize corrective actions.
+              Receives structured diagnostic evidence from layers 1 and 2. Explains what
+              was observed, answers operator questions about system status, summarizes fault
+              incidents, and generates experiment reports in plain language. Does not invent
+              telemetry, assert unconfirmed causes as fact, or independently authorize
+              corrective actions.
             </p>
-            <div className="flex gap-1 mt-2">
+            <div className="flex flex-wrap gap-1 mt-2">
               {["LLM API", "local model"].map((t) => (
                 <span key={t} className="font-mono2 text-[9px] px-2 py-0.5 rounded border border-[rgba(168,114,255,0.25)] text-[#c4b5fd]">{t}</span>
               ))}
@@ -216,18 +230,23 @@ function AILayersCard() {
         </div>
       </div>
 
-      {/* LLM example — collapsible */}
-      {expanded && (
+      {/* LLM example — toggled */}
+      {showExample && (
         <div className="border-t border-white/[0.06] bg-black/30 px-5 py-4">
           <p className="font-mono2 text-[9px] tracking-[0.14em] uppercase text-[#6b7f75] mb-3">
             Example · Node 3 goes offline
           </p>
-          {/* Structured input */}
-          <div className="rounded-[8px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-3 mb-2 font-mono2 text-[11px] text-[#6b7f75] leading-relaxed">
-            <span className="text-[#3eff7b]">health_monitor</span>{" → "}
-            <span className="text-[#a8bab0]">node_id: 3 · last_heartbeat: 8s ago · csi_frames: 0 · power_evidence: none · cause: undetermined</span>
+
+          {/* Structured input to LLM */}
+          <div className="rounded-[8px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-3 mb-2 font-mono2 text-[11px] text-[#6b7f75] leading-relaxed break-all">
+            <span className="text-[#3eff7b]">health_monitor</span>
+            {" → "}
+            <span className="text-[#a8bab0]">
+              node_id: 3 · last_heartbeat: 8s ago · csi_frames: 0 · power_evidence: none · cause: undetermined
+            </span>
           </div>
-          {/* LLM output */}
+
+          {/* LLM response */}
           <div className="rounded-[8px] border border-[rgba(168,114,255,0.2)] bg-[rgba(168,114,255,0.04)] px-4 py-3.5">
             <p className="font-mono2 text-[9px] tracking-[0.12em] uppercase text-[#c4b5fd] mb-2 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#c4b5fd]" /> SPECTRA AI Assistant
@@ -240,8 +259,9 @@ function AILayersCard() {
               Signal correction is unavailable until measurements resume."
             </p>
           </div>
+
           <p className="mt-2.5 font-mono2 text-[9px] text-[#4a5a53] leading-relaxed">
-            The LLM explains structured evidence. It did not claim power has failed — only that it is a possibility. It cannot command recovery.
+            The LLM explains structured evidence. It reported an undetermined cause — not a confirmed power failure. It cannot command recovery.
           </p>
         </div>
       )}
@@ -249,6 +269,9 @@ function AILayersCard() {
   );
 }
 
+/* ─────────────────────────────────────────────
+   Senior Design section
+───────────────────────────────────────────── */
 export function SeniorDesign() {
   return (
     <section
@@ -270,7 +293,8 @@ export function SeniorDesign() {
         />
 
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-5 items-start">
-          {/* LEFT */}
+
+          {/* ── LEFT column ── */}
           <div className="space-y-4">
 
             {/* What it is */}
@@ -280,11 +304,12 @@ export function SeniorDesign() {
                 SPECTRA is a cooperative Wi-Fi sensing research prototype. Four{" "}
                 <span className="text-white font-medium">ESP32-S3 transmitters</span> send
                 coordinated, sequenced packets to one receiver, which captures Channel State
-                Information and — under GPIO switch control — applies a selected
-                synthetic measurement impairment. That stream travels over USB serial to a{" "}
+                Information and — under GPIO switch control — applies a selected synthetic
+                measurement impairment. That stream travels over USB serial to a{" "}
                 <span className="text-white font-medium">Raspberry Pi 5</span>, which runs
-                two parallel tracks: a <span className="text-white font-medium">health monitor</span> watching
-                for node availability and hardware-level faults, and a{" "}
+                two parallel tracks: a{" "}
+                <span className="text-white font-medium">health monitor</span> watching for
+                node availability and hardware-level faults, and a{" "}
                 <span className="text-white font-medium">signal pipeline</span> running
                 preprocessing, a 1D CNN for measurement-fault classification, a correction
                 engine, and fresh-data verification. A{" "}
@@ -292,13 +317,13 @@ export function SeniorDesign() {
                 both tracks in real time.
               </p>
 
-              {/* Scope note */}
+              {/* Honest scope note */}
               <div className="mt-5 rounded-[10px] border border-white/[0.07] bg-white/[0.02] px-4 py-3.5">
                 <p className="font-mono2 text-[10px] tracking-[0.14em] uppercase text-[#6b7f75] mb-1.5">Architectural scope</p>
                 <p className="text-[13px] leading-[1.65] text-[#6b7f75]">
                   One receiver means per-link fault analysis, not a fully distributed
                   multi-receiver system. The fault injector applies{" "}
-                  <em className="text-[#a8bab0] not-italic">software-level</em> measurement
+                  <span className="text-[#a8bab0]">software-level</span> measurement
                   impairments — it does not retune the radio hardware. Simulated phase drift
                   is not proof that real RF oscillator errors have been corrected. Hardware
                   recovery (restoring power, reconnecting a node) is tracked separately from
@@ -316,9 +341,9 @@ export function SeniorDesign() {
                   [ToggleLeft, "GPIO-controlled fault injection",
                     "Switch bank on the receiver selects an impairment profile applied to the CSI stream. Switch states are ground-truth labels only — never supplied to the trained model as inputs."],
                   [FlaskConical, "1D CNN fault classifier",
-                    "Trains on CSI windows with phase-offset, phase-drift, gain-scaling, and timing impairments. Fault categories finalized after data collection confirms each is distinguishable from normal environmental variation."],
+                    "Trains on CSI windows with phase-offset, phase-drift, gain-scaling, and timing impairments. Fault categories are finalized after data collection confirms each is distinguishable from normal environmental variation."],
                   [ShieldAlert, "Correction engine",
-                    "Maps an accepted diagnosis to a technically valid recovery routine. Withholds correction when the diagnosis is uncertain, evidence is absent, or the required data is unavailable."],
+                    "Maps an accepted diagnosis to a technically valid recovery routine. Withholds correction when the diagnosis is uncertain, evidence is absent, or the required information is unavailable."],
                   [ScanLine, "Mandatory fresh-data verify",
                     "After every correction the system acquires new CSI and compares movement-detection performance against the healthy baseline. Recovery is not declared because the injector switched off."],
                 ].map(([Icon, t, d]) => {
@@ -348,7 +373,7 @@ export function SeniorDesign() {
                   [Layers, "Signal processing",
                     "CSI parsing by sender ID, sequence-number validation, window alignment, feature extraction, movement detection, and impairment simulation."],
                   [Cpu, "ML pipeline",
-                    "Session-level train/test splits, PyTorch 1D CNN training, optional GRU comparison, held-out evaluation — in progress."],
+                    "Dataset preparation with session-level train/test splits, PyTorch 1D CNN training, optional GRU comparison, and held-out evaluation — in progress."],
                   [GitBranch, "Edge deployment",
                     "Profiling inference latency and memory on the Raspberry Pi 5; ONNX Runtime as an optional deployment path after performance validation."],
                 ].map(([Icon, label, desc]) => {
@@ -382,11 +407,11 @@ export function SeniorDesign() {
                     Three methods. Same data. Held-out sessions.
                   </p>
                   <p className="text-[13.5px] text-[#a8bab0] leading-relaxed mb-3">
-                    Fixed preprocessing, rule-based diagnosis, and AI-assisted selection
-                    are compared on the same recordings, injected conditions, and test
-                    partitions. Recovery is measured against the healthy baseline on fresh
-                    data — not relative to the impaired state. No result is claimed until it
-                    appears on the independent test set.
+                    Fixed preprocessing, rule-based diagnosis, and AI-assisted selection are
+                    compared on the same recordings, injected conditions, and test partitions.
+                    Recovery is measured against the healthy baseline on fresh data — not
+                    relative to the impaired state. No result is claimed until it appears on
+                    the independent test set.
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {[
@@ -405,7 +430,7 @@ export function SeniorDesign() {
             </Reveal>
           </div>
 
-          {/* RIGHT */}
+          {/* ── RIGHT column ── */}
           <div className="space-y-4">
             <Reveal delay={0.1}><PipelineDiagram /></Reveal>
 
@@ -417,27 +442,33 @@ export function SeniorDesign() {
                 8-stage build sequence
               </p>
               <div className="space-y-0">
-                {[
-                  ["S1–S2", "CSI acquisition + 4-TX operation",
-                    "ESP-IDF firmware, USB serial pipeline, sender IDs, heartbeats, transmission schedule", true],
-                  ["S3–S4", "Movement detection + fault injection",
-                    "Non-AI baseline detector, GPIO switch-controlled impairments, labels isolated from model inputs", false],
-                  ["S5–S6", "Health monitor + CNN + correction",
-                    "Node fault taxonomy, 1D CNN training, correction engine, fresh-data verify loop", false],
-                  ["S7–S8", "Dashboard, deployment + custom PCBs",
-                    "React + FastAPI on RPi 5, then 4 TX + 1 RX carrier PCBs after bench prototype validates", false],
-                ].map(([q, t, d, active], i) => (
-                  <div key={q as string} className="flex gap-4">
+                {(
+                  [
+                    ["S1–S2", "CSI acquisition + 4-TX operation",
+                      "ESP-IDF firmware, USB serial pipeline, sender IDs, heartbeats, transmission schedule", true],
+                    ["S3–S4", "Movement detection + fault injection",
+                      "Non-AI baseline detector, GPIO switch-controlled impairments, labels isolated from model inputs", false],
+                    ["S5–S6", "Health monitor + CNN + correction",
+                      "Node fault taxonomy, 1D CNN training, correction engine, fresh-data verify loop", false],
+                    ["S7–S8", "Dashboard, deployment + custom PCBs",
+                      "React + FastAPI on RPi 5, then 4 TX + 1 RX carrier PCBs after bench prototype validates", false],
+                  ] as [string, string, string, boolean][]
+                ).map(([q, t, d, active], i) => (
+                  <div key={q} className="flex gap-4">
                     <div className="flex flex-col items-center">
-                      <span className={`w-3 h-3 rounded-full mt-1.5 shrink-0 ${active ? "bg-[#3eff7b] shadow-[0_0_10px_rgba(62,255,123,.7)]" : "border border-white/20 bg-transparent"}`} />
+                      <span className={`w-3 h-3 rounded-full mt-1.5 shrink-0 ${
+                        active
+                          ? "bg-[#3eff7b] shadow-[0_0_10px_rgba(62,255,123,.7)]"
+                          : "border border-white/20 bg-transparent"
+                      }`} />
                       {i < 3 && <span className="w-px flex-1 bg-white/10 my-1" />}
                     </div>
                     <div className="pb-5">
                       <p className="font-mono2 text-[10px] tracking-[0.12em] text-[#3eff7b]">
-                        {q as string}{active ? " · ACTIVE" : ""}
+                        {q}{active ? " · ACTIVE" : ""}
                       </p>
-                      <p className="text-[13.5px] font-semibold text-white">{t as string}</p>
-                      <p className="text-[12px] text-[#6b7f75]">{d as string}</p>
+                      <p className="text-[13.5px] font-semibold text-white">{t}</p>
+                      <p className="text-[12px] text-[#6b7f75]">{d}</p>
                     </div>
                   </div>
                 ))}
@@ -446,7 +477,8 @@ export function SeniorDesign() {
               <div className="pt-4 border-t border-white/[0.07] flex flex-wrap gap-1.5">
                 {[
                   "ESP32-S3", "ESP-IDF / C", "Python", "FastAPI", "React", "TypeScript",
-                  "PyTorch", "NumPy · SciPy", "scikit-learn", "WebSockets", "ONNX Runtime", "RPi 5",
+                  "PyTorch", "NumPy · SciPy", "pandas", "scikit-learn",
+                  "WebSockets", "ONNX Runtime", "RPi 5",
                 ].map((t) => (
                   <span key={t} className="font-mono2 text-[10px] px-2.5 py-1 rounded border border-white/10 text-[#a8bab0]">{t}</span>
                 ))}
@@ -458,13 +490,16 @@ export function SeniorDesign() {
               </div>
             </Reveal>
           </div>
+
         </div>
       </div>
     </section>
   );
 }
 
-/* ── Contact ── */
+/* ─────────────────────────────────────────────
+   Contact
+───────────────────────────────────────────── */
 export function Contact() {
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", msg: "" });
@@ -475,13 +510,15 @@ export function Contact() {
       await navigator.clipboard.writeText(PROFILE.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
-    } catch {}
+    } catch {
+      // clipboard unavailable — fail silently
+    }
   };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolio inquiry from ${form.name || "a visitor"}`);
-    const body = encodeURIComponent(`${form.msg}\n\n— ${form.name} (${form.email})`);
+    const body    = encodeURIComponent(`${form.msg}\n\n— ${form.name} (${form.email})`);
     window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`;
     setSent(true);
     setTimeout(() => setSent(false), 3000);
@@ -497,6 +534,8 @@ export function Contact() {
         />
 
         <div className="grid lg:grid-cols-[1fr_1fr] gap-5 items-stretch">
+
+          {/* CTA card */}
           <Reveal className="rounded-[20px] border border-[rgba(62,255,123,0.25)] bg-[linear-gradient(160deg,#0e1a15,#0b1210_60%)] p-8 md:p-10 relative overflow-hidden card-ring flex flex-col">
             <div className="absolute -top-24 -right-24 w-[300px] h-[300px] rounded-full bg-[radial-gradient(closest-side,rgba(62,255,123,0.18),transparent)] pointer-events-none" />
             <p className="font-mono2 text-[11px] tracking-[0.18em] uppercase text-[#3eff7b] mb-4 flex items-center gap-2">
@@ -506,66 +545,119 @@ export function Contact() {
               Have a bench<br />I can learn on?
             </h3>
             <p className="text-[14.5px] text-[#a8bab0] leading-relaxed mb-8 max-w-[44ch]">
-              Internships, lab assistant roles, or feedback on SPECTRA — if it involves a scope probe or a soldering iron, I want to hear about it.
+              Internships, lab assistant roles, or feedback on SPECTRA — if it involves
+              a scope probe or a soldering iron, I want to hear about it.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
-              <a href={`mailto:${PROFILE.email}`} className="flex-1 inline-flex items-center justify-center gap-2 bg-[#3eff7b] text-black font-mono2 text-[12px] font-semibold tracking-[0.08em] uppercase rounded-[10px] px-6 py-4 hover:bg-white transition-colors">
+              <a
+                href={`mailto:${PROFILE.email}`}
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-[#3eff7b] text-black font-mono2 text-[12px] font-semibold tracking-[0.08em] uppercase rounded-[10px] px-6 py-4 hover:bg-white transition-colors"
+              >
                 <Mail size={15} /> {PROFILE.email}
               </a>
-              <button onClick={copy} className="inline-flex items-center justify-center gap-2 border border-[rgba(62,255,123,0.35)] text-[#3eff7b] font-mono2 text-[12px] tracking-[0.08em] uppercase rounded-[10px] px-5 py-4 hover:bg-[rgba(62,255,123,0.1)] transition-colors">
-                {copied ? <Check size={15} /> : <Copy size={15} />} {copied ? "Copied" : "Copy"}
+              <button
+                type="button"
+                onClick={copy}
+                className="inline-flex items-center justify-center gap-2 border border-[rgba(62,255,123,0.35)] text-[#3eff7b] font-mono2 text-[12px] tracking-[0.08em] uppercase rounded-[10px] px-5 py-4 hover:bg-[rgba(62,255,123,0.1)] transition-colors"
+              >
+                {copied ? <Check size={15} /> : <Copy size={15} />}
+                {copied ? "Copied" : "Copy"}
               </button>
             </div>
 
             <div className="mt-auto grid grid-cols-2 gap-3">
               <div className="rounded-[10px] border border-white/[0.08] bg-black/30 p-4">
-                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] mb-1 flex items-center gap-1.5"><MapPin size={11} /> Based in</p>
-                <p className="text-[13px] text-white font-medium">Jamaica, Queens<br /><span className="text-[#6b7f75] font-normal">On-site NYC · hybrid OK</span></p>
+                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] mb-1 flex items-center gap-1.5">
+                  <MapPin size={11} /> Based in
+                </p>
+                <p className="text-[13px] text-white font-medium">
+                  Jamaica, Queens<br />
+                  <span className="text-[#6b7f75] font-normal">On-site NYC · hybrid OK</span>
+                </p>
               </div>
               <div className="rounded-[10px] border border-white/[0.08] bg-black/30 p-4">
-                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] mb-1 flex items-center gap-1.5"><CalendarClock size={11} /> Reply time</p>
-                <p className="text-[13px] text-white font-medium">Within 24h<br /><span className="text-[#6b7f75] font-normal">Usually same evening</span></p>
+                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] mb-1 flex items-center gap-1.5">
+                  <CalendarClock size={11} /> Reply time
+                </p>
+                <p className="text-[13px] text-white font-medium">
+                  Within 24h<br />
+                  <span className="text-[#6b7f75] font-normal">Usually same evening</span>
+                </p>
               </div>
             </div>
 
             <div className="mt-5 flex gap-2.5">
-              <a href={PROFILE.github} target="_blank" rel="noopener" className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
+              <a href={PROFILE.github} target="_blank" rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
                 GitHub <ArrowUpRight size={13} />
               </a>
-              <a href={PROFILE.linkedin} target="_blank" rel="noopener" className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
+              <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
                 LinkedIn <ArrowUpRight size={13} />
               </a>
-              <a href="https://expo.dev/@amajid17/quran-reader" target="_blank" rel="noopener" className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
+              <a href="https://expo.dev/@amajid17/quran-reader" target="_blank" rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
                 Expo <ArrowUpRight size={13} />
               </a>
             </div>
           </Reveal>
 
+          {/* Contact form */}
           <Reveal delay={0.1} className="rounded-[20px] border border-white/[0.08] bg-[#0b1210] p-8 md:p-10 card-ring">
-            <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75] mb-1">Quick note → opens your mail app</p>
-            <h4 className="font-display font-semibold text-[20px] text-white tracking-tight mb-6">No backend. No tracking. Just email.</h4>
+            <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75] mb-1">
+              Quick note → opens your mail app
+            </p>
+            <h4 className="font-display font-semibold text-[20px] text-white tracking-tight mb-6">
+              No backend. No tracking. Just email.
+            </h4>
             <form onSubmit={submit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <label className="block">
                   <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] block mb-2">Your name</span>
-                  <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Jane Engineer" className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors" />
+                  <input
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Jane Engineer"
+                    className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors"
+                  />
                 </label>
                 <label className="block">
                   <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] block mb-2">Your email</span>
-                  <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors" />
+                  <input
+                    required
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="you@company.com"
+                    className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors"
+                  />
                 </label>
               </div>
               <label className="block">
                 <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] block mb-2">Message</span>
-                <textarea required rows={6} value={form.msg} onChange={(e) => setForm({ ...form, msg: e.target.value })} placeholder="Hi Abdullah — we have a summer opening in sensing or embedded systems. Are you available for a 20-min chat?" className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors resize-y" />
+                <textarea
+                  required
+                  rows={6}
+                  value={form.msg}
+                  onChange={(e) => setForm({ ...form, msg: e.target.value })}
+                  placeholder="Hi Abdullah — we have a summer opening in sensing or embedded systems. Are you available for a 20-min chat?"
+                  className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors resize-y"
+                />
               </label>
-              <button type="submit" className="w-full inline-flex items-center justify-center gap-2 bg-white text-black font-mono2 text-[12px] font-semibold tracking-[0.08em] uppercase rounded-[10px] py-4 hover:bg-[#3eff7b] transition-colors">
+              <button
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2 bg-white text-black font-mono2 text-[12px] font-semibold tracking-[0.08em] uppercase rounded-[10px] py-4 hover:bg-[#3eff7b] transition-colors"
+              >
                 {sent ? <><Check size={15} /> Opening mail…</> : <><Send size={15} /> Send via email</>}
               </button>
-              <p className="font-mono2 text-[10px] text-[#6b7f75] text-center tracking-[0.04em]">Prefer attachments? Email your JD directly — I reply with résumé + reports.</p>
+              <p className="font-mono2 text-[10px] text-[#6b7f75] text-center tracking-[0.04em]">
+                Prefer attachments? Email your JD directly — I reply with résumé + reports.
+              </p>
             </form>
           </Reveal>
+
         </div>
       </div>
     </section>
