@@ -282,7 +282,7 @@ export function SeniorDesign() {
 
       <div className="relative max-w-[1180px] mx-auto px-5 md:px-8">
         <SectionHeading
-          num="04 · SENIOR DESIGN 2025–26"
+          num="04 · SENIOR DESIGN 2026–27"
           title="SPECTRA — cooperative Wi-Fi sensing with intelligent fault diagnosis."
           blurb="Four ESP32-S3 transmitters, one receiver, a Raspberry Pi 5. The system is designed to distinguish hardware availability failures, communication faults, and recoverable signal-measurement impairments — and attempt automated correction only where technically valid. Everything below is designed and actively being built. Results are pending experimental validation."
           right={
