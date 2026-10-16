@@ -3,12 +3,12 @@ export const PROFILE = {
   first: "Abdul",
   last: "Majid",
   role: "Electrical Engineering · CCNY ’27",
-  tagline: "Analog circuits, embedded systems & DSP; from first schematic to working bench prototype.",
+  tagline: "Analog circuits, embedded systems & DSP from first schematic to working bench prototype.",
   location: "Jamaica, Queens, NYC",
   email: "ajmabdul.majid76@stu-mail.ccny.cuny.edu",
   github: "https://github.com/amajid17",
   linkedin: "https://linkedin.com/in/yourhandle",
-  availability: "Open to EE Internships, Part-time Jobs",
+  availability: "Open to EE Internships · Part-time jobs",
   degree: "B.E. Electrical Engineering",
   school: "The City College of New York",
   grad: "Expected June 2027",
@@ -126,12 +126,12 @@ export const LABS: Lab[] = [
     id: "comb",
     ch: "CH7",
     area: "FPGA Implementation · Featured",
-    title: "Comb FIR Filter on FPGA",
+    title: "Comb FIR Filter on FPGA — N=13",
     summary:
       "Reverse-engineered an undisclosed comb FIR by reading the ISE schematic cold — counted cascaded registers to extract N before powering anything. Swept to Nyquist, mapped every null, proved N must be odd for a Nyquist null, modded the design and matched MATLAB freqz null-for-null.",
     tags: ["FPGA", "FIR Comb", "ISE", "MATLAB freqz", "ADC/DAC"],
     specs: [
-      { k: "Delay param", v: "Extracted from schematic", pass: true },
+      { k: "N extracted", v: "13 · schematic count", pass: true },
       { k: "Nulls", v: "All mapped to Nyquist", pass: true },
       { k: "Match", v: "HW = freqz theory", pass: true },
     ],
@@ -160,7 +160,6 @@ export const SKILLS = [
       { n: "Function Gen", l: 5 },
       { n: "Soldering / Rework", l: 4 },
       { n: "DMM + PSU", l: 5 },
-      { n: "Arduino", l: 4 },
       { n: "Raspberry Pi", l: 3 },
     ],
   },
@@ -171,6 +170,7 @@ export const SKILLS = [
       { n: "C / C++", l: 4 },
       { n: "Python", l: 5 },
       { n: "VHDL", l: 4 },
+      { n: "Vivado / ISE", l: 4 },
       { n: "Assembly", l: 3 },
     ],
   },
@@ -180,7 +180,6 @@ export const SKILLS = [
     items: [
       { n: "TypeScript", l: 5 },
       { n: "React Native / Expo", l: 5 },
-      { n: "PWA / Service Workers", l: 5 },
       { n: "HTML / CSS", l: 5 },
     ],
   },
@@ -188,35 +187,28 @@ export const SKILLS = [
 
 export const PERSONAL = [
   {
-  type: "Mobile · Offline-first",
-  name: "Quran Reader",
-  plats: ["Android", "iOS", "Expo"],
-  pitch:
-    "A distraction-free Quran reader built for offline use — Arabic-first RTL layout, inline Tajweed coloring, all 114 surahs bundled in the app, and no account or network required.",
-  links: [
-    { l: "GitHub", h: "https://github.com/amajid17/Quran-reader" },
-  ],
-  stack: [
-    "React Native",
-    "Expo SDK 57",
-    "TypeScript",
-    "React Navigation",
-    "quran-json",
-  ],
-  highlights: [
-    "Inline Tajweed coloring with per-rule colors",
-    "RTL-first Arabic reading experience with bundled fonts",
-    "All 114 surahs available locally for offline reading",
-  ],
-  arch: [
-    "Bundled Quran dataset validated at startup",
-    "Bookmarks and reading state persisted locally",
-    "Expo/EAS preview build for Android and iOS",
-  ],
-  metric: "114",
-  metricLabel: "surahs offline",
-  accent: "#3eff7b",
-},
+    type: "Mobile · Offline-first",
+    name: "Quran Reader",
+    plats: ["iOS", "Android", "React Native"],
+    pitch:
+      "Distraction-free Quran-reader proper Tajweed coloring, RTL layout, all 114 surahs bundled at install. No account, no network, no clutter.",
+    links: [
+      { l: "GitHub", h: "https://github.com/amajid17/Quran-reader" },
+      { l: "Android APK", h: "https://expo.dev/accounts/robert_19/projects/quran-reader/builds/9dd4b04a-1374-40d4-bd67-6f4d66f10bf2" },
+    ],
+    stack: ["React Native 0.81", "Expo SDK 54", "TypeScript", "React Nav v7", "quran-json"],
+    highlights: [
+      "Tajweed rendered inline via rn-tajweed-verse — per-rule colors, zero overlays",
+      "3 bundled Arabic typefaces (Scheherazade New, Noto Naskh, Literata) via I18nManager RTL",
+    ],
+    arch: [
+      "Boot checksum validates all 114 surahs — loud in dev, silent in prod",
+      "Error boundary + AsyncStorage persistence keeps bookmarks safe through crashes",
+    ],
+    metric: "114",
+    metricLabel: "surahs offline day-one",
+    accent: "#3eff7b",
+  },
   {
     type: "PWA · Installable",
     name: "Work Tracker",
@@ -225,7 +217,7 @@ export const PERSONAL = [
       "Shift + paycheck tracker that lives on your home screen. One HTML file, no framework, no build — exports a multi-sheet XLS entirely in-browser.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/work-tracker.git" },
-      { l: "Live Demo", h: "https://schedule-tracker1.netlify.app//" },
+      { l: "Live Demo", h: "https://scheduletracker19.netlify.app/" },
     ],
     stack: ["Vanilla JS", "Service Worker", "localStorage", "Blob API"],
     highlights: [
@@ -245,7 +237,7 @@ export const PERSONAL = [
     name: "Money Tracker",
     plats: ["PWA", "Multi-wallet", "Zero-dep"],
     pitch:
-      "Multi-wallet finance app with categorized transactions, recurring automation, canvas donut breakdown. No backend, no build, installs on iOS + Android.",
+      "Multi-wallet finance app — categorized transactions, recurring automation, canvas donut breakdown. No backend, no build, installs on iOS + Android.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/money-tracker.git" },
       { l: "Live Demo", h: "https://money-tracker19.netlify.app/" },
