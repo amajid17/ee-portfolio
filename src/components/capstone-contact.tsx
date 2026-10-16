@@ -50,12 +50,12 @@ function PipelineDiagram() {
         ))}
 
         {/* Offline node indicator */}
-        <rect x={4} y={192} width={62} height={22} rx="6"
+        <rect x={4} y={190} width={62} height={22} rx="6"
           fill="rgba(255,93,93,0.06)" stroke="rgba(255,93,93,0.3)" strokeWidth="1"
           strokeDasharray="4 3" />
-        <text x={35} y={206} textAnchor="middle" fill="#ff8a8a" fontSize="8"
+        <text x={35} y={204} textAnchor="middle" fill="#ff8a8a" fontSize="8"
           fontFamily="JetBrains Mono">TX? offline</text>
-        <text x={35} y={22} textAnchor="middle" fill="#6b7f75" fontSize="8.5"
+        <text x={35} y={14} textAnchor="middle" fill="#6b7f75" fontSize="8.5"
           fontFamily="JetBrains Mono">4× TX nodes</text>
 
         {/* RX node */}
@@ -156,6 +156,7 @@ function AILayersCard() {
           onClick={() => setShowExample((v) => !v)}
           className="font-mono2 text-[10px] text-[#3eff7b] hover:underline focus-visible:underline"
           aria-expanded={showExample}
+          aria-controls="llm-example"
         >
           {showExample ? "hide example" : "show example"}
         </button>
@@ -232,13 +233,13 @@ function AILayersCard() {
 
       {/* LLM example — toggled */}
       {showExample && (
-        <div className="border-t border-white/[0.06] bg-black/30 px-5 py-4">
+        <div id="llm-example" className="border-t border-white/[0.06] bg-black/30 px-5 py-4">
           <p className="font-mono2 text-[9px] tracking-[0.14em] uppercase text-[#6b7f75] mb-3">
             Example · Node 3 goes offline
           </p>
 
           {/* Structured input to LLM */}
-          <div className="rounded-[8px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-3 mb-2 font-mono2 text-[11px] text-[#6b7f75] leading-relaxed break-all">
+          <div className="rounded-[8px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-3 mb-2 font-mono2 text-[11px] text-[#6b7f75] leading-relaxed overflow-x-auto">
             <span className="text-[#3eff7b]">health_monitor</span>
             {" → "}
             <span className="text-[#a8bab0]">
@@ -282,8 +283,8 @@ export function SeniorDesign() {
 
       <div className="relative max-w-[1180px] mx-auto px-5 md:px-8">
         <SectionHeading
-          num="04 · SENIOR DESIGN 2026–27"
-          title="SPECTRA: Cooperative Multi-Base ISAC with AI-Based Fault Diagnosis and Recovery"
+          num="04 · SENIOR DESIGN 2025–26"
+          title="SPECTRA — cooperative Wi-Fi sensing with AI-based fault diagnosis and recovery."
           blurb="Four ESP32-S3 transmitters, one receiver, a Raspberry Pi 5. The system is designed to distinguish hardware availability failures, communication faults, and recoverable signal-measurement impairments — and attempt automated correction only where technically valid. Everything below is designed and actively being built. Results are pending experimental validation."
           right={
             <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase bg-[rgba(62,255,123,0.12)] text-[#3eff7b] border border-[rgba(62,255,123,0.3)] font-semibold rounded-full px-3.5 py-1.5">
@@ -301,8 +302,7 @@ export function SeniorDesign() {
             <Reveal className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] p-6 md:p-8 card-ring">
               <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#3eff7b] mb-3">What it is</p>
               <p className="text-[14.5px] leading-[1.75] text-[#a8bab0]">
-                SPECTRA is an AI-driven cooperative Wi-Fi sensing system that fuses CSI measurements from multiple receivers to detect movement, 
-                autonomously diagnose and correct recoverable measurement faults, and verify sensing recovery through fresh data. Four{" "}
+                SPECTRA is a cooperative Wi-Fi sensing research prototype. Four{" "}
                 <span className="text-white font-medium">ESP32-S3 transmitters</span> send
                 coordinated, sequenced packets to one receiver, which captures Channel State
                 Information and — under GPIO switch control — applies a selected synthetic
@@ -597,9 +597,9 @@ export function Contact() {
                 className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
                 LinkedIn <ArrowUpRight size={13} />
               </a>
-              <a href="https://expo.dev/@amajid17/quran-reader" target="_blank" rel="noopener noreferrer"
+              <a href="https://expo.dev/@amajid17" target="_blank" rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
-                Expo <ArrowUpRight size={13} />
+                Apps <ArrowUpRight size={13} />
               </a>
             </div>
           </Reveal>
