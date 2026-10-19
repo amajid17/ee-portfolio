@@ -7,7 +7,7 @@ export const PROFILE = {
   location: "Jamaica, Queens, NYC",
   email: "ajmabdul.majid76@stu-mail.ccny.cuny.edu",
   github: "https://github.com/amajid17",
-  linkedin: "https://linkedin.com/in/yourhandle",
+  linkedin: "",
   availability: "Open to EE Internships · Part-time jobs",
   degree: "B.E. Electrical Engineering",
   school: "The City College of New York",
@@ -149,6 +149,7 @@ export const SKILLS = [
       { n: "MATLAB", l: 5 },
       { n: "Multisim", l: 4 },
       { n: "Simulink", l: 3 },
+      { n: "KiCad", l: 4 },
       { n: "AutoCAD", l: 3 },
     ],
   },
@@ -160,6 +161,7 @@ export const SKILLS = [
       { n: "Function Gen", l: 5 },
       { n: "Soldering / Rework", l: 4 },
       { n: "DMM + PSU", l: 5 },
+      { n: "Arduino", l: 4 },
       { n: "Raspberry Pi", l: 3 },
     ],
   },
@@ -180,20 +182,40 @@ export const SKILLS = [
     items: [
       { n: "TypeScript", l: 5 },
       { n: "React Native / Expo", l: 5 },
+      { n: "PWA / Service Workers", l: 5 },
       { n: "HTML / CSS", l: 5 },
     ],
   },
 ];
 
-export const PERSONAL = [
+export type PersonalProject = {
+  type: string;
+  name: string;
+  plats: string[];
+  pitch: string;
+  links: { l: string; h: string }[];
+  stack: string[];
+  highlights: string[];
+  arch: string[];
+  metric: string;
+  metricLabel: string;
+  accent: string;
+  preview?: {
+    video: string;
+    screenshots: { src: string; alt: string }[];
+  };
+};
+
+export const PERSONAL: PersonalProject[] = [
   {
     type: "Mobile · Offline-first",
     name: "Quran Reader",
     plats: ["iOS", "Android", "React Native"],
     pitch:
-      "Distraction-free Quran-reader proper Tajweed coloring, RTL layout, all 114 surahs bundled at install. No account, no network, no clutter.",
+      "Distraction-free Arabic reader — proper Tajweed coloring, RTL layout, all 114 surahs bundled at install. No account, no network, no clutter.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/Quran-reader" },
+      { l: "Live · iOS", h: "https://expo.dev/accounts/amajid_17/projects/quran-reader/builds/04f64636-2f88-435e-a010-edb470139175" },
       { l: "Android APK", h: "https://expo.dev/accounts/robert_19/projects/quran-reader/builds/9dd4b04a-1374-40d4-bd67-6f4d66f10bf2" },
     ],
     stack: ["React Native 0.81", "Expo SDK 54", "TypeScript", "React Nav v7", "quran-json"],
@@ -208,6 +230,15 @@ export const PERSONAL = [
     metric: "114",
     metricLabel: "surahs offline day-one",
     accent: "#3eff7b",
+    preview: {
+      video: "/images/quran-reader-preview.mp4",
+      screenshots: [
+        { src: "/images/quran-home-dark.png",     alt: "Surah list — dark mode" },
+        { src: "/images/quran-reading.png",        alt: "Reading view with Tajweed coloring" },
+        { src: "/images/quran-settings.png",       alt: "Settings — Tajweed rule toggles" },
+        { src: "/images/quran-bookmarks.png",       alt: "Bookmarks — saved ayah with timestamp" },
+      ],
+    },
   },
   {
     type: "PWA · Installable",
