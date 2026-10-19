@@ -283,8 +283,8 @@ export function SeniorDesign() {
 
       <div className="relative max-w-[1180px] mx-auto px-5 md:px-8">
         <SectionHeading
-          num="04 · SENIOR DESIGN 2025–26"
-          title="SPECTRA — cooperative Wi-Fi sensing with AI-based fault diagnosis and recovery."
+          num="04 · SENIOR DESIGN 2026–27"
+          title="SPECTRA: Cooperative Wi-Fi sensing with AI-based fault diagnosis and recovery."
           blurb="Four ESP32-S3 transmitters, one receiver, a Raspberry Pi 5. The system is designed to distinguish hardware availability failures, communication faults, and recoverable signal-measurement impairments — and attempt automated correction only where technically valid. Everything below is designed and actively being built. Results are pending experimental validation."
           right={
             <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase bg-[rgba(62,255,123,0.12)] text-[#3eff7b] border border-[rgba(62,255,123,0.3)] font-semibold rounded-full px-3.5 py-1.5">
@@ -305,14 +305,14 @@ export function SeniorDesign() {
                 SPECTRA is a cooperative Wi-Fi sensing research prototype. Four{" "}
                 <span className="text-white font-medium">ESP32-S3 transmitters</span> send
                 coordinated, sequenced packets to one receiver, which captures Channel State
-                Information and — under GPIO switch control — applies a selected synthetic
+                Information and under GPIO switch control applies a selected synthetic
                 measurement impairment. That stream travels over USB serial to a{" "}
                 <span className="text-white font-medium">Raspberry Pi 5</span>, which runs
                 two parallel tracks: a{" "}
                 <span className="text-white font-medium">health monitor</span> watching for
                 node availability and hardware-level faults, and a{" "}
                 <span className="text-white font-medium">signal pipeline</span> running
-                preprocessing, a 1D CNN for measurement-fault classification, a correction
+                preprocessing, a 1D CNN for measurement fault classification, a correction
                 engine, and fresh-data verification. A{" "}
                 <span className="text-white font-medium">React + FastAPI dashboard</span> surfaces
                 both tracks in real time.
