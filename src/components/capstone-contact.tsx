@@ -14,7 +14,7 @@ function PipelineDiagram() {
   return (
     <div className="rounded-[14px] border border-[rgba(62,255,123,0.2)] bg-black/50 p-5 md:p-6 overflow-hidden">
       <div className="flex items-center justify-between mb-4">
-        <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75]">
+        <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086]">
           4 TX · 1 RX · RPi 5 · USB serial
         </p>
         <span className="flex items-center gap-1.5 font-mono2 text-[10px] text-[#3eff7b]">
@@ -39,7 +39,7 @@ function PipelineDiagram() {
               fill="#0b1210" stroke="rgba(62,255,123,0.4)" strokeWidth="1.2" />
             <text x={35} y={y + 2} textAnchor="middle" fill="#3eff7b" fontSize="9"
               fontFamily="JetBrains Mono" fontWeight="600">TX {i + 1}</text>
-            <text x={35} y={y + 12} textAnchor="middle" fill="#6b7f75" fontSize="7.5"
+            <text x={35} y={y + 12} textAnchor="middle" fill="#7c9086" fontSize="7.5"
               fontFamily="JetBrains Mono">heartbeat</text>
             <path d={`M66,${y} Q125,${y} 138,104`}
               fill="none" stroke="rgba(62,255,123,0.2)" strokeWidth="1.1" strokeDasharray="5 4">
@@ -55,7 +55,7 @@ function PipelineDiagram() {
           strokeDasharray="4 3" />
         <text x={35} y={204} textAnchor="middle" fill="#ff8a8a" fontSize="8"
           fontFamily="JetBrains Mono">TX? offline</text>
-        <text x={35} y={14} textAnchor="middle" fill="#6b7f75" fontSize="8.5"
+        <text x={35} y={14} textAnchor="middle" fill="#7c9086" fontSize="8.5"
           fontFamily="JetBrains Mono">4× TX nodes</text>
 
         {/* RX node */}
@@ -69,19 +69,19 @@ function PipelineDiagram() {
         {/* GPIO label */}
         <rect x={100} y={162} width={120} height={20} rx="5"
           fill="rgba(62,255,123,0.05)" stroke="rgba(62,255,123,0.18)" strokeWidth="1" />
-        <text x={160} y={175} textAnchor="middle" fill="#6b7f75" fontSize="8"
+        <text x={160} y={175} textAnchor="middle" fill="#7c9086" fontSize="8"
           fontFamily="JetBrains Mono">GPIO → fault profile</text>
 
         {/* USB serial arrow */}
         <path d="M186,104 L222,104" stroke="rgba(62,255,123,0.45)" strokeWidth="1.5"
           markerEnd="url(#arr3)" />
-        <text x={204} y={98} textAnchor="middle" fill="#6b7f75" fontSize="8"
+        <text x={204} y={98} textAnchor="middle" fill="#7c9086" fontSize="8"
           fontFamily="JetBrains Mono">USB</text>
 
         {/* RPi box */}
         <rect x={224} y={30} width={168} height={152} rx="10"
           fill="#0e1a15" stroke="rgba(62,255,123,0.45)" strokeWidth="1.3" />
-        <text x={308} y={50} textAnchor="middle" fill="#6b7f75" fontSize="8.5"
+        <text x={308} y={50} textAnchor="middle" fill="#7c9086" fontSize="8.5"
           fontFamily="JetBrains Mono">RASPBERRY Pi 5</text>
 
         {/* Health monitor sub-column */}
@@ -90,7 +90,7 @@ function PipelineDiagram() {
         <text x={266} y={72} textAnchor="middle" fill="#ff8a8a" fontSize="8"
           fontFamily="JetBrains Mono">HEALTH</text>
         {["heartbeat", "packet Δ", "telemetry", "power?"].map((t, i) => (
-          <text key={t} x={266} y={86 + i * 13} textAnchor="middle" fill="#6b7f75"
+          <text key={t} x={266} y={86 + i * 13} textAnchor="middle" fill="#7c9086"
             fontSize="7.5" fontFamily="JetBrains Mono">{t}</text>
         ))}
 
@@ -113,9 +113,9 @@ function PipelineDiagram() {
           fontFamily="JetBrains Mono">DASHBOARD</text>
         <text x={501} y={101} textAnchor="middle" fill="#e9f1ec" fontSize="10"
           fontWeight="600" fontFamily="Space Grotesk">React · FastAPI</text>
-        <text x={501} y={116} textAnchor="middle" fill="#6b7f75" fontSize="8"
+        <text x={501} y={116} textAnchor="middle" fill="#7c9086" fontSize="8"
           fontFamily="JetBrains Mono">node health · diag</text>
-        <text x={501} y={128} textAnchor="middle" fill="#6b7f75" fontSize="8"
+        <text x={501} y={128} textAnchor="middle" fill="#7c9086" fontSize="8"
           fontFamily="JetBrains Mono">recovery · replay</text>
       </svg>
 
@@ -148,7 +148,7 @@ function AILayersCard() {
   return (
     <div className="rounded-[14px] border border-white/[0.08] bg-[#0b1210] overflow-hidden">
       <div className="px-5 py-4 border-b border-white/[0.06] flex items-center justify-between">
-        <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75]">
+        <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086]">
           AI architecture · 3 layers
         </p>
         <button
@@ -171,15 +171,15 @@ function AILayersCard() {
           </div>
           <div>
             <p className="text-[12.5px] font-semibold text-white">Signal processing</p>
-            <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#6b7f75] mb-1">Measurement layer</p>
-            <p className="text-[12px] leading-relaxed text-[#6b7f75]">
+            <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#7c9086] mb-1">Measurement layer</p>
+            <p className="text-[12px] leading-relaxed text-[#7c9086]">
               Parses CSI by sender ID, aligns measurement windows, extracts amplitude,
               phase-related, temporal, and packet-quality features, detects movement,
               and estimates supported signal impairments from raw samples.
             </p>
             <div className="flex flex-wrap gap-1 mt-2">
               {["Python", "NumPy", "SciPy", "pandas"].map((t) => (
-                <span key={t} className="font-mono2 text-[9px] px-2 py-0.5 rounded border border-white/10 text-[#6b7f75]">{t}</span>
+                <span key={t} className="font-mono2 text-[9px] px-2 py-0.5 rounded border border-white/10 text-[#7c9086]">{t}</span>
               ))}
             </div>
           </div>
@@ -192,8 +192,8 @@ function AILayersCard() {
           </div>
           <div>
             <p className="text-[12.5px] font-semibold text-white">Fault-diagnosis AI</p>
-            <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#6b7f75] mb-1">Decision-support layer</p>
-            <p className="text-[12px] leading-relaxed text-[#6b7f75]">
+            <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#7c9086] mb-1">Decision-support layer</p>
+            <p className="text-[12px] leading-relaxed text-[#7c9086]">
               A trained 1D CNN classifies CSI-related measurement faults. Rule-based health
               monitoring runs in parallel to detect offline nodes, missing telemetry, and
               observable hardware failures the CNN was not designed to handle. Both tracks
@@ -201,7 +201,7 @@ function AILayersCard() {
             </p>
             <div className="flex flex-wrap gap-1 mt-2">
               {["PyTorch", "scikit-learn", "diagnostic rules"].map((t) => (
-                <span key={t} className="font-mono2 text-[9px] px-2 py-0.5 rounded border border-white/10 text-[#6b7f75]">{t}</span>
+                <span key={t} className="font-mono2 text-[9px] px-2 py-0.5 rounded border border-white/10 text-[#7c9086]">{t}</span>
               ))}
             </div>
           </div>
@@ -214,8 +214,8 @@ function AILayersCard() {
           </div>
           <div>
             <p className="text-[12.5px] font-semibold text-white">LLM intelligence</p>
-            <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#6b7f75] mb-1">Natural-language layer · optional</p>
-            <p className="text-[12px] leading-relaxed text-[#6b7f75]">
+            <p className="font-mono2 text-[9px] tracking-[0.1em] uppercase text-[#7c9086] mb-1">Natural-language layer · optional</p>
+            <p className="text-[12px] leading-relaxed text-[#7c9086]">
               Receives structured diagnostic evidence from layers 1 and 2. Explains what
               was observed, answers operator questions about system status, summarizes fault
               incidents, and generates experiment reports in plain language. Does not invent
@@ -234,12 +234,12 @@ function AILayersCard() {
       {/* LLM example — toggled */}
       {showExample && (
         <div id="llm-example" className="border-t border-white/[0.06] bg-black/30 px-5 py-4">
-          <p className="font-mono2 text-[9px] tracking-[0.14em] uppercase text-[#6b7f75] mb-3">
+          <p className="font-mono2 text-[9px] tracking-[0.14em] uppercase text-[#7c9086] mb-3">
             Example · Node 3 goes offline
           </p>
 
           {/* Structured input to LLM */}
-          <div className="rounded-[8px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-3 mb-2 font-mono2 text-[11px] text-[#6b7f75] leading-relaxed overflow-x-auto">
+          <div className="rounded-[8px] border border-white/[0.07] bg-white/[0.02] px-3.5 py-3 mb-2 font-mono2 text-[11px] text-[#7c9086] leading-relaxed overflow-x-auto">
             <span className="text-[#3eff7b]">health_monitor</span>
             {" → "}
             <span className="text-[#a8bab0]">
@@ -320,8 +320,8 @@ export function SeniorDesign() {
 
               {/* Honest scope note */}
               <div className="mt-5 rounded-[10px] border border-white/[0.07] bg-white/[0.02] px-4 py-3.5">
-                <p className="font-mono2 text-[10px] tracking-[0.14em] uppercase text-[#6b7f75] mb-1.5">Architectural scope</p>
-                <p className="text-[13px] leading-[1.65] text-[#6b7f75]">
+                <p className="font-mono2 text-[10px] tracking-[0.14em] uppercase text-[#7c9086] mb-1.5">Architectural scope</p>
+                <p className="text-[13px] leading-[1.65] text-[#7c9086]">
                   One receiver means per-link fault analysis, not a fully distributed
                   multi-receiver system. The fault injector applies{" "}
                   <span className="text-[#a8bab0]">software-level</span> measurement
@@ -355,7 +355,7 @@ export function SeniorDesign() {
                         <I size={15} />
                       </span>
                       <p className="text-[13px] font-semibold text-white mb-1">{t as string}</p>
-                      <p className="text-[12.5px] leading-relaxed text-[#6b7f75]">{d as string}</p>
+                      <p className="text-[12.5px] leading-relaxed text-[#7c9086]">{d as string}</p>
                     </div>
                   );
                 })}
@@ -386,7 +386,7 @@ export function SeniorDesign() {
                       </span>
                       <div>
                         <span className="text-[13px] font-semibold text-white">{label as string} · </span>
-                        <span className="text-[13px] text-[#6b7f75]">{desc as string}</span>
+                        <span className="text-[13px] text-[#7c9086]">{desc as string}</span>
                       </div>
                     </div>
                   );
@@ -439,7 +439,7 @@ export function SeniorDesign() {
 
             {/* Build sequence */}
             <Reveal delay={0.15} className="rounded-[14px] border border-white/[0.08] bg-[#0b1210] p-6">
-              <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75] mb-4">
+              <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086] mb-4">
                 8-stage build sequence
               </p>
               <div className="space-y-0">
@@ -469,7 +469,7 @@ export function SeniorDesign() {
                         {q}{active ? " · ACTIVE" : ""}
                       </p>
                       <p className="text-[13.5px] font-semibold text-white">{t}</p>
-                      <p className="text-[12px] text-[#6b7f75]">{d}</p>
+                      <p className="text-[12px] text-[#7c9086]">{d}</p>
                     </div>
                   </div>
                 ))}
@@ -485,7 +485,7 @@ export function SeniorDesign() {
                 ))}
               </div>
 
-              <div className="mt-4 flex items-start gap-2 font-mono2 text-[11px] text-[#6b7f75]">
+              <div className="mt-4 flex items-start gap-2 font-mono2 text-[11px] text-[#7c9086]">
                 <Activity size={13} className="text-[#3eff7b] shrink-0 mt-0.5" />
                 <span>Custom PCBs — 4 TX carrier + 1 RX carrier — designed only after bench prototype validates firmware and injection mechanism.</span>
               </div>
@@ -569,21 +569,21 @@ export function Contact() {
 
             <div className="mt-auto grid grid-cols-2 gap-3">
               <div className="rounded-[10px] border border-white/[0.08] bg-black/30 p-4">
-                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] mb-1 flex items-center gap-1.5">
+                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#7c9086] mb-1 flex items-center gap-1.5">
                   <MapPin size={11} /> Based in
                 </p>
                 <p className="text-[13px] text-white font-medium">
                   Jamaica, Queens<br />
-                  <span className="text-[#6b7f75] font-normal">On-site NYC · hybrid OK</span>
+                  <span className="text-[#7c9086] font-normal">On-site NYC · hybrid OK</span>
                 </p>
               </div>
               <div className="rounded-[10px] border border-white/[0.08] bg-black/30 p-4">
-                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] mb-1 flex items-center gap-1.5">
+                <p className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#7c9086] mb-1 flex items-center gap-1.5">
                   <CalendarClock size={11} /> Reply time
                 </p>
                 <p className="text-[13px] text-white font-medium">
                   Within 24h<br />
-                  <span className="text-[#6b7f75] font-normal">Usually same evening</span>
+                  <span className="text-[#7c9086] font-normal">Usually same evening</span>
                 </p>
               </div>
             </div>
@@ -593,10 +593,12 @@ export function Contact() {
                 className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
                 GitHub <ArrowUpRight size={13} />
               </a>
-              <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
-                LinkedIn <ArrowUpRight size={13} />
-              </a>
+              {PROFILE.linkedin && (
+                <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer"
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
+                  LinkedIn <ArrowUpRight size={13} />
+                </a>
+              )}
               <a href="https://expo.dev/@amajid17" target="_blank" rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[10px] border border-white/10 py-3 font-mono2 text-[11px] tracking-[0.08em] uppercase text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
                 Apps <ArrowUpRight size={13} />
@@ -606,7 +608,7 @@ export function Contact() {
 
           {/* Contact form */}
           <Reveal delay={0.1} className="rounded-[20px] border border-white/[0.08] bg-[#0b1210] p-8 md:p-10 card-ring">
-            <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75] mb-1">
+            <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086] mb-1">
               Quick note → opens your mail app
             </p>
             <h4 className="font-display font-semibold text-[20px] text-white tracking-tight mb-6">
@@ -615,7 +617,7 @@ export function Contact() {
             <form onSubmit={submit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <label className="block">
-                  <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] block mb-2">Your name</span>
+                  <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#7c9086] block mb-2">Your name</span>
                   <input
                     required
                     value={form.name}
@@ -625,7 +627,7 @@ export function Contact() {
                   />
                 </label>
                 <label className="block">
-                  <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] block mb-2">Your email</span>
+                  <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#7c9086] block mb-2">Your email</span>
                   <input
                     required
                     type="email"
@@ -637,7 +639,7 @@ export function Contact() {
                 </label>
               </div>
               <label className="block">
-                <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] block mb-2">Message</span>
+                <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#7c9086] block mb-2">Message</span>
                 <textarea
                   required
                   rows={6}
@@ -653,7 +655,7 @@ export function Contact() {
               >
                 {sent ? <><Check size={15} /> Opening mail…</> : <><Send size={15} /> Send via email</>}
               </button>
-              <p className="font-mono2 text-[10px] text-[#6b7f75] text-center tracking-[0.04em]">
+              <p className="font-mono2 text-[10px] text-[#7c9086] text-center tracking-[0.04em]">
                 Prefer attachments? Email your JD directly — I reply with résumé + reports.
               </p>
             </form>
