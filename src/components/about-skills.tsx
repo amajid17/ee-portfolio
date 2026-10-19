@@ -27,14 +27,14 @@ export function About() {
               <span className="w-10 h-10 rounded-[10px] bg-[rgba(62,255,123,0.1)] border border-[rgba(62,255,123,0.25)] grid place-items-center text-[#3eff7b]"><GraduationCap size={18} /></span>
               <div>
                 <p className="font-display font-semibold text-white leading-tight">{PROFILE.degree}</p>
-                <p className="font-mono2 text-[11px] text-[#6b7f75] tracking-[0.06em]">{PROFILE.school} · {PROFILE.grad}</p>
+                <p className="font-mono2 text-[11px] text-[#7c9086] tracking-[0.06em]">{PROFILE.school} · {PROFILE.grad}</p>
               </div>
               <span className="ml-auto font-mono2 text-[10px] tracking-[0.1em] uppercase text-[#3eff7b] bg-[rgba(62,255,123,0.08)] border border-[rgba(62,255,123,0.25)] rounded-full px-3 py-1">GPA on résumé</span>
             </div>
 
             <div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
               <p><span className="text-white font-medium">I bridge theory and hardware.</span> From a first schematic to a working prototype — bias networks sized by hand, verified in LTspice / Multisim / MATLAB, then measured on the bench with scope + DMM.</p>
-              <p>Coursework across circuits, electronics, digital systems and signal processing. This fall I started <span className="text-white">senior design (SafeSense)</span> — a year-long ISAC mesh capstone where energy and emergency response are the same control problem.</p>
+              <p>Coursework across circuits, electronics, digital systems and signal processing. Currently in senior design — <span className="text-white">SPECTRA</span>, a cooperative Wi-Fi sensing prototype that classifies measurement faults with a 1D CNN and attempts automated recovery, verified against fresh data.</p>
               <p>Outside the lab I ship software I actually need: <span className="text-white">three offline-first apps</span> — a Quran reader (iOS/Android) and two installable PWAs — zero backends, zero tracking, live today.</p>
             </div>
 
@@ -53,9 +53,9 @@ export function About() {
             </div>
 
             <div className="mt-7 pt-6 border-t border-white/[0.07] grid sm:grid-cols-3 gap-4 font-mono2 text-[12px]">
-              <div><p className="text-[10px] tracking-[0.14em] uppercase text-[#6b7f75] mb-1">Location</p><p className="text-[#c8d8ce] flex items-center gap-1.5"><MapPin size={13} className="text-[#3eff7b]" /> Jamaica, NY</p></div>
-              <div><p className="text-[10px] tracking-[0.14em] uppercase text-[#6b7f75] mb-1">Email</p><a href={`mailto:${PROFILE.email}`} className="text-[#3eff7b] hover:underline flex items-center gap-1.5"><Mail size={13} /> {PROFILE.email}</a></div>
-              <div><p className="text-[10px] tracking-[0.14em] uppercase text-[#6b7f75] mb-1">Elsewhere</p><p className="text-[#c8d8ce]">Family · community · reading</p></div>
+              <div><p className="text-[10px] tracking-[0.14em] uppercase text-[#7c9086] mb-1">Location</p><p className="text-[#c8d8ce] flex items-center gap-1.5"><MapPin size={13} className="text-[#3eff7b]" /> Jamaica, NY</p></div>
+              <div><p className="text-[10px] tracking-[0.14em] uppercase text-[#7c9086] mb-1">Email</p><a href={`mailto:${PROFILE.email}`} className="text-[#3eff7b] hover:underline flex items-center gap-1.5"><Mail size={13} /> {PROFILE.email}</a></div>
+              <div><p className="text-[10px] tracking-[0.14em] uppercase text-[#7c9086] mb-1">Why EE</p><p className="text-[#c8d8ce]">Been taking things apart since elementary school — flashlight fans, styrofoam boats, any toy that lasted two days before I opened it.</p></div>
             </div>
           </Reveal>
 
@@ -76,13 +76,10 @@ export function About() {
               </div>
             </div>
             <div className="p-5">
-              <div className="rounded-[10px] overflow-hidden border border-white/[0.07] mb-4">
-                <img src="/images/bench.jpg" alt="Bench with oscilloscope and breadboard" className="w-full h-[140px] object-cover" />
-              </div>
-              <a href="mailto:email@ccny.cuny.edu" className="flex items-center justify-center gap-2 w-full bg-white/[0.06] hover:bg-[#3eff7b] hover:text-black border border-white/10 hover:border-[#3eff7b] text-white font-mono2 text-[11px] tracking-[0.1em] uppercase font-semibold rounded-[8px] py-3.5 transition-colors">
+              <a href="/resume.pdf" className="flex items-center justify-center gap-2 w-full bg-white/[0.06] hover:bg-[#3eff7b] hover:text-black border border-white/10 hover:border-[#3eff7b] text-white font-mono2 text-[11px] tracking-[0.1em] uppercase font-semibold rounded-[8px] py-3.5 transition-colors">
                 <FileDown size={14} /> Download Résumé (PDF)
               </a>
-              <p className="mt-3 text-center font-mono2 text-[10px] text-[#6b7f75] tracking-[0.06em]">References · transcript · lab reports on request</p>
+              <p className="mt-3 text-center font-mono2 text-[10px] text-[#7c9086] tracking-[0.06em]">References · transcript available on request</p>
             </div>
           </Reveal>
         </div>
@@ -99,7 +96,7 @@ export function Skills() {
           num="02 · SKILLS & TOOLS"
           title="What I reach for on the bench."
           blurb="Ordered by fluency. Highlighted = I can defend it in an interview with a schematic or a scope capture."
-          right={<span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#6b7f75] hidden md:block">●○○○○ = exposure → ●●●●● = fluent</span>}
+          right={<span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#7c9086] hidden md:block">●○○○○ = exposure → ●●●●● = fluent</span>}
         />
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {SKILLS.map((col, ci) => (
