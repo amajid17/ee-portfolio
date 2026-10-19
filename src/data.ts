@@ -149,7 +149,6 @@ export const SKILLS = [
       { n: "MATLAB", l: 5 },
       { n: "Multisim", l: 4 },
       { n: "Simulink", l: 3 },
-      { n: "KiCad", l: 4 },
       { n: "AutoCAD", l: 3 },
     ],
   },
@@ -216,7 +215,7 @@ export const PERSONAL: PersonalProject[] = [
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/Quran-reader" },
       { l: "Live · iOS", h: "https://expo.dev/accounts/amajid_17/projects/quran-reader/builds/04f64636-2f88-435e-a010-edb470139175" },
-      { l: "Android APK", h: "https://expo.dev/accounts/robert_19/projects/quran-reader/builds/9dd4b04a-1374-40d4-bd67-6f4d66f10bf2" },
+      { l: "Android APK", h: "https://expo.dev/accounts/amajid_17/projects/quran-reader/builds/04f64636-2f88-435e-a010-edb470139175" },
     ],
     stack: ["React Native 0.81", "Expo SDK 54", "TypeScript", "React Nav v7", "quran-json"],
     highlights: [
