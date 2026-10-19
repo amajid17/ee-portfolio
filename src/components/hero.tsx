@@ -10,11 +10,7 @@ function GithubIcon({ size = 15 }: { size?: number }) {
 }
 function LinkedinIcon({ size = 15 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v2l.94-.94A5.94 5.94 0 0 1 16 8z" />
-      <rect width="4" height="12" x="2" y="9" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1.5a3.5 3.5 0 0 1 3-1.5z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
   );
 }
 
@@ -97,10 +93,10 @@ function ScopeCanvas() {
       ctx.fill();
 
       // sweep head
-      const fx = ((freqRef.current + t * 0.04) % 1) * W;
-      const f = ((freqRef.current + t * 0.04) % 1);
-      const mag = Math.abs(Math.sin(Math.PI * N * f));
-      const fy = H - 14 - mag * (H - 28);
+      const sweepF = (freqRef.current + t * 0.04) % 1;
+      const fx = sweepF * W;
+      const sweepMag = Math.abs(Math.sin(Math.PI * N * sweepF));
+      const fy = H - 14 - sweepMag * (H - 28);
       ctx.beginPath();
       ctx.arc(fx, fy, 4, 0, Math.PI * 2);
       ctx.fillStyle = "#e9f1ec";
@@ -152,12 +148,12 @@ export function Hero() {
 
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.14 }} className="font-display font-bold tracking-[-0.05em] leading-[0.92] text-[clamp(3.4rem,9vw,6.8rem)] text-balance">
             {PROFILE.first}<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#c8d8ce] to-[#6b7f75]">{PROFILE.last}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#c8d8ce] to-[#7c9086]">{PROFILE.last}</span>
             <span className="text-[#3eff7b]">.</span>
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.22 }} className="mt-5 flex items-center gap-2 text-[15px] md:text-[17px] text-[#a8bab0]">
-            <span className="text-[#6b7f75]">I build</span>
+            <span className="text-[#7c9086]">I build</span>
             <span className="relative inline-flex h-[1.6em] overflow-hidden font-medium text-white min-w-[210px]">
               {roles.map((r, i) => (
                 <span key={r} className={`absolute left-0 top-0 transition-all duration-500 ${i === role ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>{r}.</span>
@@ -177,16 +173,16 @@ export function Hero() {
               Get in touch <ArrowUpRight size={15} />
             </a>
             <a href="#senior-design" className="inline-flex items-center gap-2 text-[#a8bab0] hover:text-white font-mono2 text-[12px] tracking-[0.08em] uppercase px-2 py-3.5 transition-colors">
-              <Activity size={14} className="text-[#3eff7b]" /> SafeSense ’26–27
+              <Activity size={14} className="text-[#3eff7b]" /> SPECTRA ’25–26
             </a>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.45 }} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px] text-[#6b7f75]">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.45 }} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px] text-[#7c9086]">
             <span className="inline-flex items-center gap-1.5"><GraduationCap size={15} className="text-[#3eff7b]" /> B.E. EE · CCNY · ’27</span>
             <span className="inline-flex items-center gap-1.5"><MapPin size={14} className="text-[#3eff7b]" /> {PROFILE.location}</span>
             <span className="inline-flex items-center gap-3 ml-1">
-              <a href={PROFILE.github} target="_blank" rel="noopener" aria-label="GitHub" className="w-8 h-8 grid place-items-center rounded-md border border-white/10 text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors"><GithubIcon size={15} /></a>
-              <a href={PROFILE.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" className="w-8 h-8 grid place-items-center rounded-md border border-white/10 text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors"><LinkedinIcon size={15} /></a>
+              <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="w-8 h-8 grid place-items-center rounded-md border border-white/10 text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors"><GithubIcon size={15} /></a>
+              {PROFILE.linkedin && <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 grid place-items-center rounded-md border border-white/10 text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors"><LinkedinIcon size={15} /></a>}
               <a href={`mailto:${PROFILE.email}`} aria-label="Email" className="w-8 h-8 grid place-items-center rounded-md border border-white/10 text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors"><Mail size={15} /></a>
             </span>
           </motion.div>
@@ -197,10 +193,10 @@ export function Hero() {
           <div className="relative rounded-[16px] overflow-hidden border border-[rgba(62,255,123,0.18)] bg-[#0b1210] card-ring">
             <div className="grid grid-cols-[1fr_128px]">
               <div className="p-5 md:p-6">
-                <p className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#6b7f75] mb-1">FPGA Implementation · Comb FIR Filter</p>
+                <p className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#7c9086] mb-1">EE425 · Lab 7 · Comb FIR N=13</p>
                 <p className="font-display font-semibold text-[17px] tracking-tight text-white leading-tight">Hardware matches theory,<br />null-for-null.</p>
                 <div className="mt-4 flex gap-2">
-                  <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-[rgba(62,255,123,0.3)] text-[#3eff7b] bg-[rgba(62,255,123,0.08)]">ALL NULLS MAPPED</span>
+                  <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-[rgba(62,255,123,0.3)] text-[#3eff7b] bg-[rgba(62,255,123,0.08)]">13 NULLS MAPPED</span>
                   <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-white/10 text-[#a8bab0]">freqz ✓</span>
                 </div>
               </div>
@@ -211,7 +207,7 @@ export function Hero() {
             </div>
             <div className="border-t border-[rgba(62,255,123,0.12)] bg-[rgba(0,0,0,0.35)] px-4 pt-2 pb-3">
               <div className="flex items-center justify-between mb-1 px-1">
-                <span className="font-mono2 text-[10px] tracking-[0.14em] text-[#6b7f75]">CH1 · |H(e<sup>jω</sup>)| LIVE SWEEP</span>
+                <span className="font-mono2 text-[10px] tracking-[0.14em] text-[#7c9086]">CH1 · |H(e<sup>jω</sup>)| LIVE SWEEP</span>
                 <span className="font-mono2 text-[10px] text-[#3eff7b] flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#3eff7b] animate-pulse" /> MEASURING</span>
               </div>
               <ScopeCanvas />
@@ -233,11 +229,11 @@ export function Hero() {
             {[
               ["7", "bench-verified builds"],
               ["3", "apps shipped & live"],
-              ["HW=f(x)", "theory confirmed on bench"],
+              ["13", "filter nulls proven"],
             ].map(([v, l]) => (
               <div key={l} className="bg-[#0b1210] px-4 py-4 text-center">
                 <p className="font-display font-bold text-[22px] text-white leading-none">{v}</p>
-                <p className="font-mono2 text-[10px] tracking-[0.08em] uppercase text-[#6b7f75] mt-1.5">{l}</p>
+                <p className="font-mono2 text-[10px] tracking-[0.08em] uppercase text-[#7c9086] mt-1.5">{l}</p>
               </div>
             ))}
           </div>
@@ -247,10 +243,10 @@ export function Hero() {
       {/* trust bar */}
       <div className="relative border-y border-[rgba(62,255,123,0.12)] bg-[rgba(0,0,0,0.3)]">
         <div className="max-w-[1180px] mx-auto px-5 md:px-8 py-3.5 flex items-center gap-6 overflow-hidden">
-          <span className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#6b7f75] shrink-0 hidden sm:block">Bench-tested with</span>
+          <span className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#7c9086] shrink-0 hidden sm:block">Bench-tested with</span>
           <div className="flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div className="flex gap-8 w-max animate-[marquee_28s_linear_infinite]">
-              {[...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","KiCad","Basys3","LM741","TIP31","ZXT458","ESP32","Expo"], ...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","KiCad","Basys3","LM741","TIP31","ZXT458","ESP32","Expo"]].map((t, i) => (
+              {[...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","KiCad","Basys3","LM741","TIP31","ZXT458","ESP32","React Native"], ...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","KiCad","Basys3","LM741","TIP31","ZXT458","ESP32","React Native"]].map((t, i) => (
                 <span key={i} className="font-mono2 text-[11px] tracking-[0.12em] uppercase text-[#a8bab0] whitespace-nowrap flex items-center gap-8">
                   {t} <span className="text-[#3eff7b]/40">·</span>
                 </span>
