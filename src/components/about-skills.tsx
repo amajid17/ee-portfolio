@@ -16,7 +16,7 @@ export function About() {
         <SectionHeading
           num="01 · ABOUT"
           title="Engineer first, builder always."
-          blurb="Fourth-year EE at CCNY working across analog, embedded and DSP. I like closing the loop — hand calc, sim, bench — and documenting what actually happened, tolerances included."
+          blurb="Fourth-year EE at CCNY. I work across analog, embedded, and DSP. I write down where the sim disagrees with the bench, not just when they match."
           right={<a href="mailto:email@ccny.cuny.edu" className="hidden md:inline-flex items-center gap-1.5 font-mono2 text-[11px] tracking-[0.1em] uppercase text-[#3eff7b] border border-[rgba(62,255,123,0.3)] rounded-full px-4 py-2 hover:bg-[rgba(62,255,123,0.1)] transition-colors">References on request <ArrowUpRight size={12} /></a>}
         />
 
@@ -33,9 +33,9 @@ export function About() {
             </div>
 
             <div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
-              <p><span className="text-white font-medium">I bridge theory and hardware.</span> From a first schematic to a working prototype — bias networks sized by hand, verified in LTspice / Multisim / MATLAB, then measured on the bench with scope + DMM.</p>
-              <p>Coursework across circuits, electronics, digital systems and signal processing. Currently in senior design — <span className="text-white">SPECTRA</span>, a cooperative Wi-Fi sensing prototype that classifies measurement faults with a 1D CNN and attempts automated recovery, verified against fresh data.</p>
-              <p>Outside the lab I ship software I actually need: <span className="text-white">three offline-first apps</span> — a Quran reader (iOS/Android) and two installable PWAs — zero backends, zero tracking, live today.</p>
+              <p>I do the full loop — hand calc the bias network, run it in LTspice, build it on the breadboard, then figure out why the bench reading doesn't match. <span className="text-white font-medium">That gap is where most of the learning happens.</span></p>
+              <p>Fourth-year EE at CCNY, working through analog, digital, and DSP coursework. Currently deep in senior design: <span className="text-white">SPECTRA</span>, a Wi-Fi CSI sensing system that tries to diagnose its own measurement faults and recover without someone resetting it manually.</p>
+              <p>I also build software I actually use. <span className="text-white">Three shipped apps</span>: a Quran reader on iOS and Android, and two PWAs that install on your home screen. No backend, no account, works offline from day one.</p>
             </div>
 
             {/* focus areas */}
@@ -129,7 +129,7 @@ export function Skills() {
         <Reveal delay={0.2} className="mt-6 rounded-[14px] border border-[rgba(62,255,123,0.2)] bg-[linear-gradient(135deg,rgba(62,255,123,0.08),transparent_60%)] p-6 md:p-7 flex flex-col md:flex-row md:items-center gap-4">
           <div className="flex-1">
             <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#3eff7b] mb-1.5">How I work</p>
-            <p className="text-[14px] text-[#c8d8ce] leading-relaxed max-w-[70ch]">Hand calc first, simulate second, measure third — and write down where they disagree. Every lab below lists what was <em className="text-white not-italic font-medium">specified, simulated and measured</em>, not just what was built.</p>
+            <p className="text-[14px] text-[#c8d8ce] leading-relaxed max-w-[70ch]">Hand calc first, simulate second, measure third. Write down where they disagree. Every lab below lists what was <em className="text-white not-italic font-medium">specified, simulated and measured</em>, not just what was built.</p>
           </div>
           <a href="#projects" className="shrink-0 inline-flex items-center gap-2 font-mono2 text-[11px] tracking-[0.1em] uppercase font-semibold bg-[#3eff7b] text-black rounded-[8px] px-5 py-3 hover:bg-white transition-colors">See proof below <ArrowUpRight size={14} /></a>
         </Reveal>
