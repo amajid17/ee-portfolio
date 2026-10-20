@@ -173,7 +173,7 @@ export function Hero() {
               Get in touch <ArrowUpRight size={15} />
             </a>
             <a href="#senior-design" className="inline-flex items-center gap-2 text-[#a8bab0] hover:text-white font-mono2 text-[12px] tracking-[0.08em] uppercase px-2 py-3.5 transition-colors">
-              <Activity size={14} className="text-[#3eff7b]" /> SPECTRA ’25–26
+              <Activity size={14} className="text-[#3eff7b]" /> SPECTRA ’26–’27
             </a>
           </motion.div>
 
@@ -246,7 +246,7 @@ export function Hero() {
           <span className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#7c9086] shrink-0 hidden sm:block">Bench-tested with</span>
           <div className="flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div className="flex gap-8 w-max animate-[marquee_28s_linear_infinite]">
-              {[...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","KiCad","Basys3","LM741","TIP31","ZXT458","ESP32","React Native"], ...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","KiCad","Basys3","LM741","TIP31","ZXT458","ESP32","React Native"]].map((t, i) => (
+              {[...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","TinkerCad","Basys3","LM741","TIP31","ZXT458","ESP32","React Native"], ...["LTspice","MATLAB","Multisim","Vivado","ISE Suite","TinkerCad","Basys3","LM741","TIP31","ZXT458","ESP32","React Native"]].map((t, i) => (
                 <span key={i} className="font-mono2 text-[11px] tracking-[0.12em] uppercase text-[#a8bab0] whitespace-nowrap flex items-center gap-8">
                   {t} <span className="text-[#3eff7b]/40">·</span>
                 </span>
