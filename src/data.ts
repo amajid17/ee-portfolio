@@ -3,7 +3,7 @@ export const PROFILE = {
   first: "Abdul",
   last: "Majid",
   role: "Electrical Engineering · CCNY ’27",
-  tagline: "Analog circuits, embedded systems & DSP from first schematic to working bench prototype.",
+  tagline: "Analog circuits, embedded systems and DSP. From first schematic to working bench prototype.",
   location: "Jamaica, Queens, NYC",
   email: "ajmabdul.majid76@stu-mail.ccny.cuny.edu",
   github: "https://github.com/amajid17",
@@ -34,7 +34,7 @@ export const LABS: Lab[] = [
     area: "Passive Filter Design",
     title: "RC Low-Pass Frequency Response",
     summary:
-      "Designed and built a passive RC low-pass filter. Measured −3 dB cutoff with function generator + oscilloscope and closed the loop against LTspice AC sweep.",
+      "Passive RC low-pass filter. Measured the −3 dB cutoff with a function generator and oscilloscope, then checked it against the LTspice AC sweep.",
     tags: ["LTspice", "Oscilloscope", "Bode Plot"],
     specs: [
       { k: "Topology", v: "1st-order RC LPF" },
@@ -49,7 +49,7 @@ export const LABS: Lab[] = [
     area: "Op-Amp Circuit Design",
     title: "Inverting Amplifier · Gain −10",
     summary:
-      "LM741 inverting stage designed for Av = −10. Characterized output swing, slew-rate limiting and gain-bandwidth trade-off; post-processed captures in MATLAB.",
+      "LM741 inverting stage, Av = −10. Measured output swing, slew-rate limiting, and gain-bandwidth trade-off, then post-processed the scope captures in MATLAB.",
     tags: ["LM741", "MATLAB", "Gain / BW"],
     specs: [
       { k: "Gain target", v: "−10 V/V", pass: true },
@@ -81,7 +81,7 @@ export const LABS: Lab[] = [
     area: "BJT Amplifier Design",
     title: "Common-Emitter Audio Amplifier",
     summary:
-      "ZXT458 common-emitter stage designed from first principles — Q-point, T-model small-signal, full bias network — for gain, Zin/Zout and max undistorted swing.",
+      "ZXT458 common-emitter stage built from scratch: Q-point, T-model small-signal, full bias network. Characterized for gain, Zin/Zout, and max undistorted swing.",
     detail:
       "Confirmed Q-point in Multisim vs bench (deltas traced to tolerances + E12 substitutions). Swept audio band to show bypass-cap effect on gain; found clipping onset to prove swing spec.",
     tags: ["ZXT458", "T-Model", "Multisim", "Gain Sweep"],
@@ -98,7 +98,7 @@ export const LABS: Lab[] = [
     area: "Digital Logic & FPGA",
     title: "FPGA Traffic-Light Controller",
     summary:
-      "4-way intersection FSM in VHDL — synthesized, placed and routed on Basys3. Clean state encoding, debounced inputs, fully constrained.",
+      "4-way intersection FSM in VHDL. Synthesized, placed and routed on Basys3. Clean state encoding, debounced inputs, fully constrained.",
     tags: ["VHDL", "Vivado", "FSM", "Basys3"],
     specs: [
       { k: "HDL", v: "VHDL FSM" },
@@ -128,7 +128,7 @@ export const LABS: Lab[] = [
     area: "FPGA Implementation · Featured",
     title: "Comb FIR Filter on FPGA — N=13",
     summary:
-      "Reverse-engineered an undisclosed comb FIR by reading the ISE schematic cold — counted cascaded registers to extract N before powering anything. Swept to Nyquist, mapped every null, proved N must be odd for a Nyquist null, modded the design and matched MATLAB freqz null-for-null.",
+      "Reverse-engineered an undisclosed comb FIR by reading the ISE schematic cold. Counted cascaded registers to extract N before powering anything. Swept to Nyquist, mapped every null, proved N must be odd for a Nyquist null, then modified the design and matched MATLAB freqz null-for-null.",
     tags: ["FPGA", "FIR Comb", "ISE", "MATLAB freqz", "ADC/DAC"],
     specs: [
       { k: "N extracted", v: "13 · schematic count", pass: true },
@@ -149,6 +149,7 @@ export const SKILLS = [
       { n: "MATLAB", l: 5 },
       { n: "Multisim", l: 4 },
       { n: "Simulink", l: 3 },
+      { n: "TinkerCad", l: 4 },
       { n: "AutoCAD", l: 3 },
     ],
   },
@@ -211,11 +212,11 @@ export const PERSONAL: PersonalProject[] = [
     name: "Quran Reader",
     plats: ["iOS", "Android", "React Native"],
     pitch:
-      "Distraction-free Arabic reader — proper Tajweed coloring, RTL layout, all 114 surahs bundled at install. No account, no network, no clutter.",
+      "A Quran reader I built because the ones I tried were either too cluttered or required an internet connection. RTL layout, Tajweed coloring per rule, all 114 surahs on-device. Open it on a plane, no account needed.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/Quran-reader" },
       { l: "Live · iOS", h: "https://expo.dev/accounts/amajid_17/projects/quran-reader/builds/04f64636-2f88-435e-a010-edb470139175" },
-      { l: "Android APK", h: "https://expo.dev/accounts/amajid_17/projects/quran-reader/builds/04f64636-2f88-435e-a010-edb470139175" },
+      { l: "Android APK", h: "https://expo.dev/accounts/robert_19/projects/quran-reader/builds/9dd4b04a-1374-40d4-bd67-6f4d66f10bf2" },
     ],
     stack: ["React Native 0.81", "Expo SDK 54", "TypeScript", "React Nav v7", "quran-json"],
     highlights: [
@@ -244,7 +245,7 @@ export const PERSONAL: PersonalProject[] = [
     name: "Work Tracker",
     plats: ["PWA", "Single file", "Zero-dep"],
     pitch:
-      "Shift + paycheck tracker that lives on your home screen. One HTML file, no framework, no build — exports a multi-sheet XLS entirely in-browser.",
+      "Shift + paycheck tracker that lives on your home screen. One HTML file, no framework, no build step. Exports a multi-sheet XLS entirely in-browser.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/work-tracker.git" },
       { l: "Live Demo", h: "https://scheduletracker19.netlify.app/" },
@@ -267,7 +268,7 @@ export const PERSONAL: PersonalProject[] = [
     name: "Money Tracker",
     plats: ["PWA", "Multi-wallet", "Zero-dep"],
     pitch:
-      "Multi-wallet finance app — categorized transactions, recurring automation, canvas donut breakdown. No backend, no build, installs on iOS + Android.",
+      "Multi-wallet finance app with categorized transactions, recurring automation, and a canvas donut chart. No backend, no build step, installs on iOS and Android.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/money-tracker.git" },
       { l: "Live Demo", h: "https://money-tracker19.netlify.app/" },
