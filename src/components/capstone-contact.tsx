@@ -284,8 +284,8 @@ export function SeniorDesign() {
       <div className="relative max-w-[1180px] mx-auto px-5 md:px-8">
         <SectionHeading
           num="04 · SENIOR DESIGN 2026–27"
-          title="SPECTRA: Cooperative Wi-Fi sensing with AI-based fault diagnosis and recovery."
-          blurb="Four ESP32-S3 transmitters, one receiver, a Raspberry Pi 5. The system is designed to distinguish hardware availability failures, communication faults, and recoverable signal-measurement impairments — and attempt automated correction only where technically valid. Everything below is designed and actively being built. Results are pending experimental validation."
+          title="SPECTRA — cooperative Wi-Fi sensing with AI-based fault diagnosis and recovery."
+          blurb="Four ESP32-S3 transmitters, one receiver, a Raspberry Pi 5. The system tries to tell the difference between a node that's offline, a communication failure, and a signal fault it can actually fix. Still being built. Nothing here is a claimed result."
           right={
             <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase bg-[rgba(62,255,123,0.12)] text-[#3eff7b] border border-[rgba(62,255,123,0.3)] font-semibold rounded-full px-3.5 py-1.5">
               Active · Stage 1–2
@@ -302,19 +302,16 @@ export function SeniorDesign() {
             <Reveal className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] p-6 md:p-8 card-ring">
               <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#3eff7b] mb-3">What it is</p>
               <p className="text-[14.5px] leading-[1.75] text-[#a8bab0]">
-                SPECTRA is a cooperative Wi-Fi sensing research prototype. Four{" "}
-                <span className="text-white font-medium">ESP32-S3 transmitters</span> send
-                coordinated, sequenced packets to one receiver, which captures Channel State
-                Information and under GPIO switch control applies a selected synthetic
-                measurement impairment. That stream travels over USB serial to a{" "}
-                <span className="text-white font-medium">Raspberry Pi 5</span>, which runs
-                two parallel tracks: a{" "}
-                <span className="text-white font-medium">health monitor</span> watching for
-                node availability and hardware-level faults, and a{" "}
-                <span className="text-white font-medium">signal pipeline</span> running
-                preprocessing, a 1D CNN for measurement fault classification, a correction
-                engine, and fresh-data verification. A{" "}
-                <span className="text-white font-medium">React + FastAPI dashboard</span> surfaces
+                Four <span className="text-white font-medium">ESP32-S3 transmitters</span> send
+                sequenced packets to one receiver. The receiver captures Channel State Information
+                and, under GPIO switch control, injects a selected synthetic measurement impairment
+                into the stream. That goes over USB serial to a{" "}
+                <span className="text-white font-medium">Raspberry Pi 5</span> running two parallel
+                tracks: a <span className="text-white font-medium">health monitor</span> watching
+                for offline nodes and hardware faults, and a{" "}
+                <span className="text-white font-medium">signal pipeline</span> doing preprocessing,
+                1D CNN fault classification, correction, and fresh-data verification. A{" "}
+                <span className="text-white font-medium">React + FastAPI dashboard</span> shows
                 both tracks in real time.
               </p>
 
@@ -531,7 +528,7 @@ export function Contact() {
         <SectionHeading
           num="05 · CONTACT"
           title="Let's talk hardware."
-          blurb="Fastest reply by email — I read everything. Lab reports, résumé, transcript and references available on request."
+          blurb="Fastest reply is email. Résumé, transcript, and references available on request."
         />
 
         <div className="grid lg:grid-cols-[1fr_1fr] gap-5 items-stretch">
@@ -546,8 +543,7 @@ export function Contact() {
               Have a bench<br />I can learn on?
             </h3>
             <p className="text-[14.5px] text-[#a8bab0] leading-relaxed mb-8 max-w-[44ch]">
-              Internships, lab assistant roles, or feedback on SPECTRA — if it involves
-              a scope probe or a soldering iron, I want to hear about it.
+              Internships, lab roles, feedback on SPECTRA. If it involves a scope or a soldering iron, I'm interested.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
