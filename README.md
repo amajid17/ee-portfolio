@@ -1,82 +1,124 @@
-# Electrical Engineering Portfolio
+# EE Portfolio — React + Vite + Tailwind CSS 4
 
-Personal portfolio for an EE student at College. Analog circuits, embedded systems, DSP projects and shipped apps. Senior Design capstone.
+A portfolio template built for electrical engineering students. Covers analog circuits, embedded systems, DSP lab work, personal software projects, and a senior design capstone section. All content lives in a single `data.ts` file — no component editing required to make it yours.
 
-Built with **React 19 + Vite + Tailwind CSS 4**. The production build inlines everything into a single `dist/index.html` (via `vite-plugin-singlefile`) plus two images — perfect for static hosting.
+Production build inlines everything into one `dist/index.html` via `vite-plugin-singlefile`. Static hosting friendly — no server, no build pipeline on the host.
 
-## 🚀 Deploy to GitHub Pages (automatic)
+---
 
-Deployment is already wired up via GitHub Actions. Just do this once:
+## Stack
 
-### 1. Create a repo on GitHub
-- Go to [github.com/new](https://github.com/new)
-- Name it anything, e.g. `ee-portfolio` (or `yourusername.github.io` for a root URL)
-- Keep it **Public** (required for free GitHub Pages)
-- **Do not** initialize with a README (we already have one)
+| Layer | Technology |
+|---|---|
+| UI | React 19 |
+| Build | Vite 7 + vite-plugin-singlefile |
+| Styling | Tailwind CSS 4 |
+| Animation | Framer Motion |
+| Icons | Lucide React |
+| Language | TypeScript (strict) |
 
-### 2. Push this code
-From this project folder, run:
+---
+
+## Local development
+
+```bash
+npm install
+npm run dev      # dev server at http://localhost:5173
+npm run build    # production build → dist/
+npm run preview  # preview the built output locally
+```
+
+---
+
+## Project structure
+
+```
+public/
+  images/          static assets (portrait, screenshots, preview video)
+  resume.pdf        drop your résumé here — linked automatically
+
+src/
+  data.ts           single source of truth for all portfolio content
+  components/
+    chrome.tsx        navbar, footer, section headings, scroll reveal
+    hero.tsx          hero section + live scope canvas
+    about-skills.tsx  about card + skill fluency bars
+    projects.tsx      EE lab cards + comb filter explorer + personal apps
+    capstone-contact.tsx  senior design section + contact form
+  App.tsx           page composition
+
+index.html          meta tags, fonts, favicon
+.github/workflows/deploy.yml   GitHub Pages auto-deploy
+```
+
+---
+
+## Customizing
+
+Edit `src/data.ts` — it holds every piece of content the site renders. The components read from it; you should not need to touch them for standard customization.
+
+**Required before going live:**
+
+```ts
+// src/data.ts
+name:     "Your Name"
+email:    "you@university.edu"
+linkedin: "https://linkedin.com/in/yourhandle"  // set "" to hide the button
+github:   "https://github.com/yourusername"
+```
+
+**Résumé:** drop `resume.pdf` into `public/`. The download button links to `/resume.pdf` and will work automatically once the file is there.
+
+**Images:** replace the files in `public/images/` with your own. Keep the same filenames or update the references in `data.ts`.
+
+**Labs:** each entry in the `LABS` array takes a `summary`, `tags`, `specs`, and a `category` (`"Analog" | "Power" | "Digital" | "DSP"`). The filter tabs on the projects page are generated from these automatically.
+
+**Personal projects:** the `PERSONAL` array supports an optional `preview` field for mobile app screenshots and a demo video. See the `PersonalProject` type in `data.ts` for the full shape.
+
+---
+
+## Deploying to GitHub Pages
+
+Deployment is automated via GitHub Actions. One-time setup:
+
+**1. Create a repo**
+
+Go to [github.com/new](https://github.com/new). Public repo required for free GitHub Pages. Do not initialize with a README.
+
+**2. Push**
 
 ```bash
 git init
 git add .
-git commit -m "Initial commit: EE portfolio"
+git commit -m "initial commit"
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/REPO_NAME.git
 git push -u origin main
 ```
 
-### 3. Turn on GitHub Pages
-- In your repo, go to **Settings → Pages**
-- Under **Build and deployment → Source**, select **GitHub Actions**
-- Save
+**3. Enable Pages**
 
-### 4. Wait for the deploy
-- Go to the **Actions** tab — you'll see "Deploy to GitHub Pages" running
-- When it's green ✅, your site is live at:
+Repo → Settings → Pages → Build and deployment → Source → **GitHub Actions** → Save.
+
+**4. Verify**
+
+Actions tab → "Deploy to GitHub Pages" → wait for green. Site goes live at:
 
 ```
 https://YOUR_USERNAME.github.io/REPO_NAME/
 ```
 
-(If you named the repo `YOUR_USERNAME.github.io`, it's live at `https://YOUR_USERNAME.github.io/` instead.)
+After the initial setup, every push to `main` triggers a rebuild and redeploy automatically.
 
-### 5. Update anytime
-Just `git add . && git commit -m "update" && git push` — the workflow rebuilds and redeploys automatically in ~1 minute.
+> If you name the repo `YOUR_USERNAME.github.io`, the site will be at `https://YOUR_USERNAME.github.io/` with no subdirectory path. Update `base` in `vite.config.ts` accordingly:
+> ```ts
+> base: "/"  // instead of "/REPO_NAME/"
+> ```
 
-> 💡 **Tip:** You can also trigger a redeploy manually from the **Actions** tab → "Deploy to GitHub Pages" → **Run workflow**.
+---
 
-## 🖥️ Local development
+## Notes
 
-```bash
-npm install
-npm run dev      # dev server at http://localhost:5173
-npm run build    # production build into dist/
-npm run preview  # preview the production build locally
-```
-
-## 📁 Project structure
-
-```
-.github/workflows/deploy.yml  auto-deploy to GitHub Pages
-public/images/     portrait/projects capture
-src/
-  data.ts                  all portfolio content (edit this to update the site)
-  components/
-    chrome.tsx             navbar, footer, section headings, scroll reveal
-    hero.tsx               hero + live scope canvas + stats
-    about-skills.tsx       about card + skills with fluency bars
-    projects.tsx           EE labs grid + interactive comb filter + personal apps
-    capstone-contact.tsx   SafeSense section + contact form
-  App.tsx                  page composition
-index.html                 SEO meta, fonts, favicon
-```
-
-## ✏️ To customize
-
-Edit **`src/data.ts`** — it holds your name, email, links, skills, personal projects. Change content there, never in the components.
-
-**Before going live, replace these placeholders in `src/data.ts`:**
-- `email: "email@school.edu"` → your real school email
-- `linkedin: "https://linkedin.com/in/yourhandle"` → your LinkedIn
-- Add your real `resume.pdf` to `public/` and update the download link, or point the button at a Google Drive/Notion link
+- The `vite-plugin-singlefile` build inlines all JS and CSS into `index.html`. The only external files are anything you place in `public/` (images, PDF). This means the entire site ships as a single transferable file.
+- Tailwind CSS 4 is used via the Vite plugin — no `tailwind.config.js` required. Custom tokens are defined in `index.css` under `@theme`.
+- TypeScript strict mode is enabled. The `LABS` and `PERSONAL` arrays are fully typed — adding a malformed entry will surface as a compile error before it reaches the browser.
