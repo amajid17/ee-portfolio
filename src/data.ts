@@ -26,7 +26,7 @@ export type Lab = {
   featured?: boolean;
   category: "Analog" | "Power" | "Digital" | "DSP";
 };
-
+ 
 export const LABS: Lab[] = [
   {
     id: "rc",
@@ -66,7 +66,7 @@ export const LABS: Lab[] = [
     summary:
       "Full linear supply from spec: hand-calculated Zener bias to hold breakdown under all loads, op-amp feedback divider for the full adjust range, and a TIP31 emitter-follower to deliver load current the op-amp alone couldn’t.",
     detail:
-      "Verified in Multisim at light + heavy load, then characterized on the bench across load steps with ripple (scope) + DMM readings. Met every spec with margin.",
+      "Verified in Multisim at light and heavy load, then measured on the bench across load steps with ripple on the scope and DMM readings. Met every spec with margin.",
     tags: ["LM6132", "TIP31", "Multisim", "Zener Ref", "Feedback"],
     specs: [
       { k: "Output", v: "0–12 V adjustable", pass: true },
@@ -81,7 +81,7 @@ export const LABS: Lab[] = [
     area: "BJT Amplifier Design",
     title: "Common-Emitter Audio Amplifier",
     summary:
-      "ZXT458 common-emitter stage built from scratch: Q-point, T-model small-signal, full bias network. Characterized for gain, Zin/Zout, and max undistorted swing.",
+      "ZXT458 common-emitter stage built from scratch: Q-point, T-model small-signal, full bias network. Measured gain, Zin/Zout, and max undistorted swing.",
     detail:
       "Confirmed Q-point in Multisim vs bench (deltas traced to tolerances + E12 substitutions). Swept audio band to show bypass-cap effect on gain; found clipping onset to prove swing spec.",
     tags: ["ZXT458", "T-Model", "Multisim", "Gain Sweep"],
@@ -139,7 +139,7 @@ export const LABS: Lab[] = [
     featured: true,
   },
 ];
-
+ 
 export const SKILLS = [
   {
     label: "Design & Simulation",
@@ -187,7 +187,7 @@ export const SKILLS = [
     ],
   },
 ];
-
+ 
 export type PersonalProject = {
   type: string;
   name: string;
@@ -205,7 +205,7 @@ export type PersonalProject = {
     screenshots: { src: string; alt: string }[];
   };
 };
-
+ 
 export const PERSONAL: PersonalProject[] = [
   {
     type: "Mobile · Offline-first",
@@ -268,7 +268,7 @@ export const PERSONAL: PersonalProject[] = [
     name: "Money Tracker",
     plats: ["PWA", "Multi-wallet", "Zero-dep"],
     pitch:
-      "Multi-wallet finance app with categorized transactions, recurring automation, and a canvas donut chart. No backend, no build step, installs on iOS and Android.",
+      "Tracks spending across multiple wallets with category breakdowns, recurring entries, and a canvas-drawn donut chart. No backend, no build step. Installs straight to the home screen.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/money-tracker.git" },
       { l: "Live Demo", h: "https://money-tracker19.netlify.app/" },
@@ -287,7 +287,7 @@ export const PERSONAL: PersonalProject[] = [
     accent: "#c4b5fd",
   },
 ];
-
+ 
 export const NAV = [
   { id: "about", n: "01 · About" },
   { id: "skills", n: "02 · Skills" },
@@ -295,3 +295,4 @@ export const NAV = [
   { id: "senior-design", n: "04 · Capstone" },
   { id: "contact", n: "05 · Contact" },
 ];
+ 
