@@ -17,7 +17,7 @@ export function About() {
           num="01 · ABOUT"
           title="Engineer first, builder always."
           blurb="Fourth-year EE at CCNY. I work across analog, embedded, and DSP. I write down where the sim disagrees with the bench, not just when they match."
-          right={<a href="mailto:email@ccny.cuny.edu" className="hidden md:inline-flex items-center gap-1.5 font-mono2 text-[11px] tracking-[0.1em] uppercase text-[#3eff7b] border border-[rgba(62,255,123,0.3)] rounded-full px-4 py-2 hover:bg-[rgba(62,255,123,0.1)] transition-colors">References on request <ArrowUpRight size={12} /></a>}
+          right={<a href={`mailto:${PROFILE.email}`} className="hidden md:inline-flex items-center gap-1.5 font-mono2 text-[11px] tracking-[0.1em] uppercase text-[#3eff7b] border border-[rgba(62,255,123,0.3)] rounded-full px-4 py-2 hover:bg-[rgba(62,255,123,0.1)] transition-colors">References on request <ArrowUpRight size={12} /></a>}
         />
 
         <div className="grid lg:grid-cols-[1fr_360px] gap-6 items-start">
@@ -62,7 +62,7 @@ export function About() {
           {/* side card */}
           <Reveal delay={0.12} className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] overflow-hidden card-ring lg:sticky lg:top-[90px]">
             <div className="relative aspect-[4/4.4] overflow-hidden">
-              <img src="/images/portrait.jpg" alt="Abdullah Majid in the lab" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="/images/portrait.jpg" alt={`${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1210] via-transparent to-transparent" />
               <div className="absolute top-4 left-4 flex gap-2">
                 <span className="font-mono2 text-[10px] tracking-[0.1em] uppercase bg-black/60 backdrop-blur border border-[rgba(62,255,123,0.3)] text-[#3eff7b] rounded-full px-3 py-1.5">Class of 2027</span>
