@@ -333,9 +333,9 @@ export function SeniorDesign() {
               <div className="mt-5 grid sm:grid-cols-2 gap-3">
                 {[
                   [ServerCrash, "Hardware health monitoring",
-                    "Heartbeat timeouts, packet gap analysis, CSI acquisition indicators, and optional power-monitor data combine to flag nodes as offline, suspected power-failed, or unreachable — with cause marked uncertain when evidence is insufficient."],
+                    "Tracks heartbeat timeouts, packet gaps, CSI acquisition quality, and optional power-monitor readings. Flags nodes as offline, suspected power-failed, or unreachable. Cause stays uncertain until there's actual evidence."],
                   [WifiOff, "Fault taxonomy",
-                    "Distinguishes hardware availability failures, communication faults, firmware or CSI-acquisition issues, and recoverable signal-measurement impairments. Missing packets alone do not constitute proof of a hardware fault."],
+                    "Separates hardware availability failures, communication faults, firmware issues, and recoverable signal-measurement impairments. Missing packets are a symptom, not a diagnosis."],
                   [ToggleLeft, "GPIO-controlled fault injection",
                     "Switch bank on the receiver selects an impairment profile applied to the CSI stream. Switch states are ground-truth labels only — never supplied to the trained model as inputs."],
                   [FlaskConical, "1D CNN fault classifier",
@@ -367,7 +367,7 @@ export function SeniorDesign() {
                   [BarChart2, "React + FastAPI dashboard",
                     "Live node health, CSI visualizations, fault notifications, diagnosis confidence, correction history, before/after performance, and experiment replay."],
                   [Terminal, "Python backend",
-                    "CSI ingestion, telemetry monitoring, experiment management, model inference, correction routing, and health-monitoring coordination over FastAPI."],
+                    "FastAPI services for CSI ingestion, experiment management, and model inference. Coordinates between the health monitor and the signal pipeline."],
                   [Layers, "Signal processing",
                     "CSI parsing by sender ID, sequence-number validation, window alignment, feature extraction, movement detection, and impairment simulation."],
                   [Cpu, "ML pipeline",
