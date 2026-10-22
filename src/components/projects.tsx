@@ -37,14 +37,14 @@ function CombExplorer() {
       <div className="flex flex-col md:flex-row">
         <div className="flex-1 p-5 md:p-6">
           <div className="flex items-center justify-between mb-3">
-            <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75]">Interactive · |H(e<sup>jω</sup>)| = |1 − z<sup>−N</sup>|</p>
+            <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086]">Interactive · |H(e<sup>jω</sup>)| = |1 − z<sup>−N</sup>|</p>
             <p className="font-mono2 text-[11px] text-[#3eff7b]">N = <span className="text-white font-semibold text-[14px]">{N}</span></p>
           </div>
           <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-[110px]" preserveAspectRatio="none" aria-hidden="true">
             <line x1="0" y1={H - 8} x2={W} y2={H - 8} stroke="rgba(62,255,123,0.25)" strokeWidth="1" strokeDasharray="4 4" />
             {/* Nyquist marker */}
             <line x1={W / 2} y1="0" x2={W / 2} y2={H} stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-            <text x={W / 2 + 6} y="14" fill="#6b7f75" fontSize="10" fontFamily="JetBrains Mono">Nyquist</text>
+            <text x={W / 2 + 6} y="14" fill="#7c9086" fontSize="10" fontFamily="JetBrains Mono">Nyquist</text>
             <path d={path} fill="none" stroke="#3eff7b" strokeWidth="1.8" style={{ filter: "drop-shadow(0 0 6px rgba(62,255,123,.6))" }} />
             {/* null dots */}
             {Array.from({ length: N + 1 }, (_, k) => {
@@ -56,7 +56,7 @@ function CombExplorer() {
             <label className="font-mono2 text-[11px] text-[#a8bab0] flex justify-between mb-2"><span>Delay stages N</span><span>7 — 16</span></label>
             <input
               type="range" min={7} max={16} value={N}
-              onChange={(e) => { setN(Number(e.target.value)); e.target.style.setProperty("--fill", `${((Number(e.target.value) - 7) / 9) * 100}%`); }}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setN(Number(e.target.value)); e.target.style.setProperty("--fill", `${((Number(e.target.value) - 7) / 9) * 100}%`); }}
               className="trace-range w-full" style={{ ["--fill" as string]: `${((N - 7) / 9) * 100}%` }}
               aria-label="Comb delay N"
             />
@@ -72,7 +72,7 @@ function CombExplorer() {
           <div className={`rounded-[8px] border px-3 py-2.5 font-mono2 text-[11px] mb-3 ${nyquistNull ? "border-[rgba(62,255,123,0.3)] text-[#3eff7b] bg-[rgba(62,255,123,0.07)]" : "border-[rgba(255,93,93,0.3)] text-[#ff8a8a] bg-[rgba(255,93,93,0.07)]"}`}>
             {nyquistNull ? "✓ NYQUIST NULL PRESENT" : "✕ NYQUIST NULL MISSING"}
           </div>
-          <p className="font-mono2 text-[10px] text-[#6b7f75] leading-relaxed">Try N=12 vs N=13 — the exact A/B from the bench sweep to Nyquist.</p>
+          <p className="font-mono2 text-[10px] text-[#7c9086] leading-relaxed">Try N=12 vs N=13 — the exact A/B from the bench sweep to Nyquist.</p>
         </div>
       </div>
     </div>
@@ -82,8 +82,8 @@ function CombExplorer() {
 export function EELabs() {
   const [f, setF] = useState<(typeof FILTERS)[number]>("All");
   const list = useMemo(() => (f === "All" ? LABS : LABS.filter((l) => l.category === f)), [f]);
-  const featured = LABS.find((l) => l.featured)!;
-  const rest = list.filter((l) => !l.featured || f !== "All");
+  const featured = LABS.find((l: typeof LABS[0]) => l.featured)!;
+  const rest = list.filter((l: typeof LABS[0]) => !l.featured || f !== "All");
 
   return (
     <section id="projects" className="scroll-mt-[80px] py-[72px] md:py-[100px] border-t border-white/[0.06]">
@@ -109,7 +109,7 @@ export function EELabs() {
               <div className="flex flex-wrap items-center gap-2.5 mb-4">
                 <span className="inline-flex items-center gap-1.5 font-mono2 text-[10px] tracking-[0.12em] uppercase bg-[#3eff7b] text-black font-semibold rounded-full px-3 py-1"><BadgeCheck size={12} /> Featured · {featured.ch}</span>
                 <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase text-[#3eff7b]">{featured.area}</span>
-                <span className="font-mono2 text-[10px] text-[#6b7f75] ml-auto hidden md:block">ISE SCHEMATIC → BENCH SWEEP → MATLAB freqz</span>
+                <span className="font-mono2 text-[10px] text-[#7c9086] ml-auto hidden md:block">ISE SCHEMATIC → BENCH SWEEP → MATLAB freqz</span>
               </div>
               <h3 className="font-display font-bold text-[clamp(1.4rem,3vw,2rem)] tracking-[-0.02em] text-white leading-tight mb-3">{featured.title}</h3>
               <p className="text-[14.5px] leading-[1.75] text-[#a8bab0] max-w-[90ch]">{featured.summary}</p>
@@ -117,7 +117,7 @@ export function EELabs() {
                 {featured.specs.map((s) => (
                   <div key={s.k} className="flex items-center gap-2.5 rounded-[10px] border border-white/[0.08] bg-white/[0.02] px-4 py-3">
                     <BadgeCheck size={15} className="text-[#3eff7b] shrink-0" />
-                    <div><p className="font-mono2 text-[10px] tracking-[0.1em] uppercase text-[#6b7f75]">{s.k}</p><p className="text-[13px] text-white font-medium">{s.v}</p></div>
+                    <div><p className="font-mono2 text-[10px] tracking-[0.1em] uppercase text-[#7c9086]">{s.k}</p><p className="text-[13px] text-white font-medium">{s.v}</p></div>
                   </div>
                 ))}
               </div>
@@ -132,7 +132,7 @@ export function EELabs() {
         {/* grid */}
         <motion.div layout className="grid md:grid-cols-2 gap-4">
           <AnimatePresence mode="popLayout">
-            {rest.map((p) => (
+            {rest.map((p: typeof LABS[0]) => (
               <motion.article
                 layout key={p.id}
                 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }}
@@ -141,22 +141,22 @@ export function EELabs() {
               >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="inline-flex items-center gap-1.5 font-mono2 text-[10px] tracking-[0.1em] uppercase text-[#3eff7b]"><CatIcon c={p.category} /> {p.ch} · {p.area}</span>
-                  <span className="ml-auto font-mono2 text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-[#6b7f75] uppercase tracking-[0.08em]">{p.category}</span>
+                  <span className="ml-auto font-mono2 text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-[#7c9086] uppercase tracking-[0.08em]">{p.category}</span>
                 </div>
                 <h3 className="font-display font-semibold text-[17px] tracking-tight text-white leading-snug mb-2.5 group-hover:text-[#3eff7b] transition-colors">{p.title}</h3>
                 <p className="text-[13.5px] leading-[1.7] text-[#a8bab0] flex-1">{p.summary}</p>
-                {p.detail && <p className="mt-2.5 text-[13px] leading-[1.7] text-[#6b7f75] border-l-2 border-[rgba(62,255,123,0.3)] pl-3">{p.detail}</p>}
+                {p.detail && <p className="mt-2.5 text-[13px] leading-[1.7] text-[#7c9086] border-l-2 border-[rgba(62,255,123,0.3)] pl-3">{p.detail}</p>}
                 <div className="mt-4 pt-4 border-t border-white/[0.06] grid grid-cols-1 gap-1.5 mb-4">
-                  {p.specs.map((s) => (
+                  {p.specs.map((s: { k: string; v: string; pass?: boolean }) => (
                     <div key={s.k} className="flex items-baseline gap-2 font-mono2 text-[11px]">
-                      <span className="text-[#6b7f75] uppercase tracking-[0.08em] shrink-0 w-[92px]">{s.k}</span>
+                      <span className="text-[#7c9086] uppercase tracking-[0.08em] shrink-0 w-[92px]">{s.k}</span>
                       <span className="flex-1 border-b border-dotted border-white/10 -translate-y-1" />
                       <span className={`${s.pass ? "text-[#3eff7b]" : "text-[#c8d8ce]"}`}>{s.v} {s.pass ? "✓" : ""}</span>
                     </div>
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {p.tags.map((t) => (<span key={t} className="font-mono2 text-[10px] px-2 py-1 rounded border border-white/10 text-[#6b7f75] group-hover:border-[rgba(62,255,123,0.2)] group-hover:text-[#a8bab0] transition-colors">{t}</span>))}
+                  {p.tags.map((t: string) => (<span key={t} className="font-mono2 text-[10px] px-2 py-1 rounded border border-white/10 text-[#7c9086] group-hover:border-[rgba(62,255,123,0.2)] group-hover:text-[#a8bab0] transition-colors">{t}</span>))}
                 </div>
               </motion.article>
             ))}
@@ -172,14 +172,15 @@ export function PersonalProjects() {
   return (
     <div className="max-w-[1180px] mx-auto px-5 md:px-8 pb-[72px] md:pb-[96px]">
       <Reveal className="flex items-center gap-4 mb-8">
-        <span className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#6b7f75]">Personal · Shipped software</span>
+        <span className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#7c9086]">Personal · Shipped software</span>
         <span className="h-px flex-1 bg-white/[0.07]" />
-        <span className="font-mono2 text-[10px] text-[#6b7f75] hidden md:block">LIVE TODAY · INSTALLABLE · OFFLINE</span>
+        <span className="font-mono2 text-[10px] text-[#7c9086] hidden md:block">LIVE TODAY · INSTALLABLE · OFFLINE</span>
       </Reveal>
 
       <div className="space-y-4">
         {PERSONAL.map((p, i) => (
-          <Reveal key={p.name} delay={i * 0.06} className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] overflow-hidden hover:border-[rgba(62,255,123,0.25)] transition-colors card-ring">
+          <div key={p.name}>
+          <Reveal delay={i * 0.06} className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] overflow-hidden hover:border-[rgba(62,255,123,0.25)] transition-colors card-ring">
             <div className="grid lg:grid-cols-[1fr_1fr]">
               {/* left */}
               <div className="p-6 md:p-9">
@@ -194,13 +195,13 @@ export function PersonalProjects() {
                 <p className="text-[14px] leading-[1.7] text-[#a8bab0] mb-5 max-w-[52ch]">{p.pitch}</p>
                 <div className="flex flex-wrap gap-2.5 mb-6">
                   {p.links.map((l) => (
-                    <a key={l.l} href={l.h} target="_blank" rel="noopener" className={`inline-flex items-center gap-1.5 font-mono2 text-[11px] tracking-[0.08em] uppercase font-semibold rounded-[8px] px-4 py-2.5 transition-colors ${l.l.includes("Live") || l.l.includes("Expo") ? "bg-white text-black hover:bg-[#3eff7b]" : "border border-[rgba(62,255,123,0.35)] text-[#3eff7b] hover:bg-[rgba(62,255,123,0.1)]"}`}>
+                    <a key={l.l} href={l.h} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1.5 font-mono2 text-[11px] tracking-[0.08em] uppercase font-semibold rounded-[8px] px-4 py-2.5 transition-colors ${l.l.includes("Live") || l.l.includes("Expo") ? "bg-white text-black hover:bg-[#3eff7b]" : "border border-[rgba(62,255,123,0.35)] text-[#3eff7b] hover:bg-[rgba(62,255,123,0.1)]"}`}>
                       {l.l} <ArrowUpRight size={13} />
                     </a>
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {p.stack.map((s) => (<span key={s} className="font-mono2 text-[10px] px-2 py-1 rounded bg-white/[0.04] border border-white/[0.07] text-[#6b7f75]">{s}</span>))}
+                  {p.stack.map((s) => (<span key={s} className="font-mono2 text-[10px] px-2 py-1 rounded bg-white/[0.04] border border-white/[0.07] text-[#7c9086]">{s}</span>))}
                 </div>
               </div>
               {/* right */}
@@ -209,21 +210,59 @@ export function PersonalProjects() {
                   <p className="font-display font-bold text-[42px] leading-none" style={{ color: p.accent }}>{p.metric}</p>
                   <p className="font-mono2 text-[11px] leading-snug text-[#a8bab0] uppercase tracking-[0.06em]">{p.metricLabel}</p>
                 </div>
-                <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75] mb-3">Technical highlights</p>
+                <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086] mb-3">Technical highlights</p>
                 <ul className="space-y-2.5 mb-6">
                   {p.highlights.map((h) => (
                     <li key={h} className="flex gap-2.5 text-[13px] leading-[1.6] text-[#c8d8ce]"><span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: p.accent }} />{h}</li>
                   ))}
                 </ul>
-                <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#6b7f75] mb-3">Architecture</p>
+                <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086] mb-3">Architecture</p>
                 <ul className="space-y-2.5">
                   {p.arch.map((h) => (
-                    <li key={h} className="flex gap-2.5 text-[13px] leading-[1.6] text-[#6b7f75]"><span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-white/20 shrink-0" />{h}</li>
+                    <li key={h} className="flex gap-2.5 text-[13px] leading-[1.6] text-[#7c9086]"><span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-white/20 shrink-0" />{h}</li>
                   ))}
                 </ul>
               </div>
             </div>
+
+            {/* Preview panel — only rendered when project has preview media */}
+            {p.preview && (
+              <div className="border-t border-white/[0.07] bg-black/40 p-6 md:p-8">
+                <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086] mb-4 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#3eff7b]" /> App preview · no install required
+                </p>
+                <div className="grid md:grid-cols-[1fr_1fr] gap-5 items-start">
+                  {/* Video */}
+                  <div className="rounded-[12px] overflow-hidden border border-white/[0.07] bg-black">
+                    <video
+                      src={p.preview.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-auto block"
+                      aria-label="Quran Reader app walkthrough — surah list, reading view with Tajweed coloring, bookmark saving"
+                    />
+                  </div>
+                  {/* Screenshot grid */}
+                  <div className="grid grid-cols-2 gap-2">
+                    {p.preview.screenshots.map((s) => (
+                      <div key={s.src} className="rounded-[10px] overflow-hidden border border-white/[0.07] bg-black">
+                        <img
+                          src={s.src}
+                          alt={s.alt}
+                          className="w-full h-auto block"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </Reveal>
+          </div>
         ))}
       </div>
     </div>
