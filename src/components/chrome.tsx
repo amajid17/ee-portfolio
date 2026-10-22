@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, ArrowUp, FileDown, Copy, Check } from "lucide-react";
+import { Menu, X, ArrowUpRight, ArrowUp, Copy, Check } from "lucide-react";
 import { NAV, PROFILE } from "../data";
 
 /* ---------- scroll reveal ---------- */
@@ -28,7 +28,7 @@ export function SectionHeading({ num, title, blurb, right }: { num: string; titl
           <span className="h-px flex-1 bg-gradient-to-r from-[rgba(62,255,123,0.3)] to-transparent" />
           {right}
         </div>
-        <h2 className="font-display text-[clamp(1.9rem,4vw,2.9rem)] font-700 font-bold tracking-[-0.03em] leading-[1.05] text-[#e9f1ec]">{title}</h2>
+        <h2 className="font-display text-[clamp(1.9rem,4vw,2.9rem)] font-bold tracking-[-0.03em] leading-[1.05] text-[#e9f1ec]">{title}</h2>
         {blurb && <p className="mt-3 max-w-[62ch] text-[15px] leading-relaxed text-[#a8bab0]">{blurb}</p>}
       </Reveal>
     </div>
@@ -41,6 +41,19 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
   const [progress, setProgress] = useState(0);
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
+
+  // Move focus into menu when it opens; close on Escape
+  useEffect(() => {
+    if (open) {
+      firstMenuLinkRef.current?.focus();
+    }
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -71,7 +84,7 @@ export function Navbar() {
           <a href="#top" className="flex items-center gap-3 group">
             <span className="w-8 h-8 rounded-[8px] bg-[#0b1210] border border-[rgba(62,255,123,0.25)] grid place-items-center font-display font-bold text-[#3eff7b] text-sm group-hover:bg-[#3eff7b] group-hover:text-black transition-colors">M</span>
             <span className="font-mono2 text-[12px] tracking-[0.08em] text-[#e9f1ec]">
-              a.majid<span className="text-[#6b7f75]"> / </span><span className="text-[#3eff7b]">ee</span>
+              a.majid<span className="text-[#7c9086]"> / </span><span className="text-[#3eff7b]">ee</span>
             </span>
             <span className="hidden md:inline-flex items-center gap-1.5 ml-2 text-[10px] font-mono2 tracking-[0.12em] uppercase text-[#a8bab0] border border-white/10 rounded-full px-2.5 py-1">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3eff7b] animate-pulse" /> CCNY ’27
@@ -93,7 +106,14 @@ export function Navbar() {
             </li>
           </ul>
 
-          <button onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open} className="lg:hidden w-10 h-10 grid place-items-center rounded-md border border-white/10 text-[#a8bab0]">
+          <button
+            type="button"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            className="lg:hidden w-10 h-10 grid place-items-center rounded-md border border-white/10 text-[#a8bab0]"
+          >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </nav>
@@ -103,18 +123,35 @@ export function Navbar() {
 
         <AnimatePresence>
           {open && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="lg:hidden overflow-hidden bg-[rgba(6,10,9,0.98)] border-b border-[rgba(62,255,123,0.12)] backdrop-blur-xl">
+            <motion.div
+              id="mobile-nav"
+              role="navigation"
+              aria-label="Mobile navigation"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden overflow-hidden bg-[rgba(6,10,9,0.98)] border-b border-[rgba(62,255,123,0.12)] backdrop-blur-xl"
+            >
               <ul className="px-6 py-4 flex flex-col">
-                {NAV.map((n) => (
+                {NAV.map((n, i) => (
                   <li key={n.id}>
-                    <a onClick={() => setOpen(false)} href={`#${n.id}`} className="block py-3.5 font-mono2 text-[12px] tracking-[0.12em] uppercase text-[#a8bab0] border-b border-white/[0.06] last:border-0">
+                    <a
+                      ref={i === 0 ? firstMenuLinkRef : undefined}
+                      onClick={() => setOpen(false)}
+                      href={`#${n.id}`}
+                      className="block py-3.5 font-mono2 text-[12px] tracking-[0.12em] uppercase text-[#a8bab0] border-b border-white/[0.06] last:border-0"
+                    >
                       {n.n}
                     </a>
                   </li>
                 ))}
                 <li className="py-3">
-                  <a onClick={() => setOpen(false)} href="mailto:email@ccny.cuny.edu" className="flex items-center justify-center gap-2 bg-[#3eff7b] text-black font-mono2 text-[12px] uppercase font-semibold rounded-md py-3">
-                    <FileDown size={14} /> Download Résumé
+                  <a
+                    onClick={() => setOpen(false)}
+                    href="#contact"
+                    className="flex items-center justify-center gap-2 bg-[#3eff7b] text-black font-mono2 text-[12px] uppercase font-semibold rounded-md py-3"
+                  >
+                    Get in touch
                   </a>
                 </li>
               </ul>
@@ -138,10 +175,10 @@ export function Footer() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div>
             <p className="font-display font-bold text-lg tracking-tight">a.majid<span className="text-[#3eff7b]">.</span>ee</p>
-            <p className="font-mono2 text-[11px] text-[#6b7f75] tracking-[0.08em] mt-1">BUILT ON THE BENCH · MEASURED, NOT SIMULATED ONLY</p>
+            <p className="font-mono2 text-[11px] text-[#7c9086] tracking-[0.08em] mt-1">BUILT ON THE BENCH · MEASURED, NOT SIMULATED ONLY</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <button onClick={copy} className="inline-flex items-center gap-2 font-mono2 text-[11px] tracking-[0.08em] border border-white/10 rounded-md px-3.5 py-2.5 text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
+            <button type="button" onClick={copy} className="inline-flex items-center gap-2 font-mono2 text-[11px] tracking-[0.08em] border border-white/10 rounded-md px-3.5 py-2.5 text-[#a8bab0] hover:text-[#3eff7b] hover:border-[rgba(62,255,123,0.4)] transition-colors">
               {copied ? <Check size={13} className="text-[#3eff7b]" /> : <Copy size={13} />} {copied ? "Copied!" : PROFILE.email}
             </button>
             <a href="#top" className="inline-flex items-center gap-2 font-mono2 text-[11px] tracking-[0.08em] bg-white/[0.06] border border-white/10 rounded-md px-3.5 py-2.5 text-white hover:bg-[#3eff7b] hover:text-black hover:border-[#3eff7b] transition-colors">
@@ -150,8 +187,8 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between gap-3 pt-6 border-t border-white/[0.06]">
-          <p className="font-mono2 text-[11px] text-[#6b7f75]">© 2026 {PROFILE.first} {PROFILE.last} · Jamaica, NY · CCNY Electrical Engineering</p>
-          <p className="font-mono2 text-[11px] text-[#6b7f75]">Space Grotesk · Inter · JetBrains Mono · Last updated Oct 2026</p>
+          <p className="font-mono2 text-[11px] text-[#7c9086]">© 2026 {PROFILE.first} {PROFILE.last} · Jamaica, NY · CCNY Electrical Engineering</p>
+
         </div>
       </div>
     </footer>
