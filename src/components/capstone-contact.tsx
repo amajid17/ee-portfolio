@@ -153,7 +153,7 @@ function AILayersCard() {
         </p>
         <button
           type="button"
-          onClick={() => setShowExample((v) => !v)}
+          onClick={() => setShowExample((v: boolean) => !v)}
           className="font-mono2 text-[10px] text-[#3eff7b] hover:underline focus-visible:underline"
           aria-expanded={showExample}
           aria-controls="llm-example"
@@ -617,7 +617,7 @@ export function Contact() {
                   <input
                     required
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, name: e.target.value })}
                     placeholder="Jane Engineer"
                     className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors"
                   />
@@ -628,7 +628,7 @@ export function Contact() {
                     required
                     type="email"
                     value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, email: e.target.value })}
                     placeholder="you@company.com"
                     className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors"
                   />
@@ -640,7 +640,7 @@ export function Contact() {
                   required
                   rows={6}
                   value={form.msg}
-                  onChange={(e) => setForm({ ...form, msg: e.target.value })}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setForm({ ...form, msg: e.target.value })}
                   placeholder="Hi Abdullah — we have a summer opening in sensing or embedded systems. Are you available for a 20-min chat?"
                   className="w-full rounded-[10px] bg-black/40 border border-white/10 px-4 py-3.5 text-[14px] text-white placeholder:text-[#4a5a53] focus:border-[#3eff7b] outline-none transition-colors resize-y"
                 />
