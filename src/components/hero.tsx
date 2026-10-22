@@ -122,7 +122,7 @@ export function Hero() {
   const [role, setRole] = useState(0);
   const roles = ["Analog circuits", "Embedded firmware", "DSP on FPGA", "Offline-first software"];
   useEffect(() => {
-    const id = setInterval(() => setRole((r) => (r + 1) % roles.length), 2400);
+    const id = setInterval(() => setRole((r: number) => (r + 1) % roles.length), 2400);
     return () => clearInterval(id);
   }, []);
 
