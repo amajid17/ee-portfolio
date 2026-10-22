@@ -64,7 +64,7 @@ export const LABS: Lab[] = [
     area: "Linear Voltage Regulation",
     title: "0–12 V Regulated Bench Supply",
     summary:
-      "Full linear supply from spec: hand-calculated Zener bias to hold breakdown under all loads, op-amp feedback divider for the full adjust range, and a TIP31 emitter-follower to deliver load current the op-amp alone couldn’t.",
+      "Full linear supply from spec. Hand-calculated the Zener bias, sized the op-amp feedback divider for the full 0–12 V range, and added a TIP31 emitter-follower to source the load current the op-amp alone couldn’t.",
     detail:
       "Verified in Multisim at light and heavy load, then measured on the bench across load steps with ripple on the scope and DMM readings. Met every spec with margin.",
     tags: ["LM6132", "TIP31", "Multisim", "Zener Ref", "Feedback"],
