@@ -100,7 +100,8 @@ export function Skills() {
         />
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {SKILLS.map((col, ci) => (
-            <Reveal key={col.label} delay={ci * 0.08} className="rounded-[14px] border border-white/[0.08] bg-[#0b1210] p-6 hover:border-[rgba(62,255,123,0.3)] transition-colors group">
+            <div key={col.label}>
+            <Reveal delay={ci * 0.08} className="rounded-[14px] border border-white/[0.08] bg-[#0b1210] p-6 hover:border-[rgba(62,255,123,0.3)] transition-colors group">
               <div className="flex items-center gap-2.5 mb-5">
                 <span className="w-8 h-8 rounded-[8px] bg-[rgba(62,255,123,0.1)] border border-[rgba(62,255,123,0.2)] grid place-items-center text-[#3eff7b]">{ICONS[col.icon]}</span>
                 <p className="font-mono2 text-[11px] tracking-[0.14em] uppercase text-white">{col.label}</p>
@@ -123,6 +124,7 @@ export function Skills() {
                 ))}
               </ul>
             </Reveal>
+            </div>
           ))}
         </div>
 
