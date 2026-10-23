@@ -60,8 +60,8 @@ export function About() {
           </Reveal>
 
           {/* side card */}
-          <Reveal delay={0.12} className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] overflow-hidden card-ring lg:sticky lg:top-[90px]">
-            <div className="relative aspect-[4/4.4] overflow-hidden">
+          <Reveal delay={0.12} className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] overflow-hidden card-ring lg:sticky lg:top-[90px] lg:max-h-[calc(100vh-120px)]">
+            <div className="relative h-[320px] overflow-hidden">
               <img src="/images/portrait.jpg" alt={`${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1210] via-transparent to-transparent" />
               <div className="absolute top-4 left-4 flex gap-2">
