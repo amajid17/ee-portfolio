@@ -173,7 +173,7 @@ export function Hero() {
               Get in touch <ArrowUpRight size={15} />
             </a>
             <a href="#senior-design" className="inline-flex items-center gap-2 text-[#a8bab0] hover:text-white font-mono2 text-[12px] tracking-[0.08em] uppercase px-2 py-3.5 transition-colors">
-              <Activity size={14} className="text-[#3eff7b]" /> SPECTRA ’26–’27
+              <Activity size={14} className="text-[#3eff7b]" /> SPECTRA '26–'27
             </a>
           </motion.div>
 
@@ -200,8 +200,8 @@ export function Hero() {
                   <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-white/10 text-[#a8bab0]">freqz ✓</span>
                 </div>
               </div>
-              <div className="relative">
-                <img src="/images/portrait.jpg" alt="Portrait of Abdullah Majid" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="relative min-h-[160px]">
+                <img src="/images/portrait.jpg" alt={`Portrait of ${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0b1210] via-transparent to-transparent" />
               </div>
             </div>
@@ -215,11 +215,11 @@ export function Hero() {
           </div>
 
           {/* floating chips */}
-          <div className="absolute -left-3 md:-left-6 top-8 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite]">
+          <div className="absolute -left-3 md:-left-6 top-8 z-10 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite]">
             <span className="w-7 h-7 grid place-items-center rounded-full bg-[rgba(62,255,123,0.12)] text-[#3eff7b]"><Zap size={14} /></span>
             <span className="font-mono2 text-[10px] tracking-[0.08em] text-white">0–12 V PSU · IN SPEC</span>
           </div>
-          <div className="absolute -right-2 md:-right-4 bottom-24 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite] [animation-delay:1.2s]">
+          <div className="absolute -right-2 md:-right-4 bottom-24 z-10 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite] [animation-delay:1.2s]">
             <span className="w-7 h-7 grid place-items-center rounded-full bg-[rgba(62,255,123,0.12)] text-[#3eff7b]"><Cpu size={14} /></span>
             <span className="font-mono2 text-[10px] tracking-[0.08em] text-white">BASYS3 · BITSTREAM OK</span>
           </div>
