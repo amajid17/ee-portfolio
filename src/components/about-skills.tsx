@@ -62,7 +62,7 @@ export function About() {
           {/* side card */}
           <Reveal delay={0.12} className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] overflow-hidden card-ring lg:sticky lg:top-[90px] lg:max-h-[calc(100vh-120px)]">
             <div className="relative h-[320px] overflow-hidden">
-              <img src="/images/portrait.jpg" alt={`${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
+              <img src="images/portrait.jpg" alt={`${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1210] via-transparent to-transparent" />
               <div className="absolute top-4 left-4 flex gap-2">
                 <span className="font-mono2 text-[10px] tracking-[0.1em] uppercase bg-black/60 backdrop-blur border border-[rgba(62,255,123,0.3)] text-[#3eff7b] rounded-full px-3 py-1.5">Class of 2027</span>
