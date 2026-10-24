@@ -210,13 +210,12 @@ export const PERSONAL: PersonalProject[] = [
   {
     type: "Mobile · Offline-first",
     name: "Quran Reader",
-    plats: ["iOS", "Android", "React Native"],
+    plats: ["iOS", "React Native"],
     pitch:
       "A Quran reader I built because the ones I tried were either too cluttered or required an internet connection. RTL layout, Tajweed coloring per rule, all 114 surahs on-device. Open it on a plane, no account needed.",
     links: [
       { l: "GitHub", h: "https://github.com/amajid17/Quran-reader" },
       { l: "Live · iOS", h: "https://expo.dev/accounts/amajid_17/projects/quran-reader/builds/04f64636-2f88-435e-a010-edb470139175" },
-      { l: "Android APK", h: "https://expo.dev/accounts/amajid_17/projects/quran-reader/builds/04f64636-2f88-435e-a010-edb470139175" },
     ],
     stack: ["React Native 0.81", "Expo SDK 54", "TypeScript", "React Nav v7", "quran-json"],
     highlights: [
@@ -231,12 +230,12 @@ export const PERSONAL: PersonalProject[] = [
     metricLabel: "surahs offline day-one",
     accent: "#3eff7b",
     preview: {
-      video: "/images/quran-reader-preview.mp4",
+      video: "images/quran-reader-preview.mp4",
       screenshots: [
-        { src: "/images/quran-home-dark.png",     alt: "Surah list — dark mode" },
-        { src: "/images/quran-reading.png",        alt: "Reading view with Tajweed coloring" },
-        { src: "/images/quran-settings.png",       alt: "Settings — Tajweed rule toggles" },
-        { src: "/images/quran-bookmarks.png",       alt: "Bookmarks — saved ayah with timestamp" },
+        { src: "images/quran-home-dark.png",     alt: "Surah list, dark mode" },
+        { src: "images/quran-reading.png",        alt: "Reading view with Tajweed coloring" },
+        { src: "images/quran-settings.png",       alt: "Settings, Tajweed rule toggles" },
+        { src: "images/quran-bookmarks.png",       alt: "Bookmarks — saved ayah with timestamp" },
       ],
     },
   },
