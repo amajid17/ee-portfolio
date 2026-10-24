@@ -201,7 +201,7 @@ export function Hero() {
                 </div>
               </div>
               <div className="relative min-h-[160px]">
-                <img src="/images/portrait.jpg" alt={`Portrait of ${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
+                <img src="images/portrait.jpg" alt={`Portrait of ${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0b1210] via-transparent to-transparent" />
               </div>
             </div>
