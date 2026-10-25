@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, MapPin, GraduationCap, Mail, Activity, Cpu, Zap } from "lucide-react";
+import { ArrowDown, ArrowUpRight, MapPin, GraduationCap, Mail, Activity } from "lucide-react";
 import { PROFILE } from "../data";
 
 function GithubIcon({ size = 15 }: { size?: number }) {
@@ -208,15 +208,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* floating chips */}
-          <div className="absolute left-3 top-8 z-10 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite]">
-            <span className="w-7 h-7 grid place-items-center rounded-full bg-[rgba(62,255,123,0.12)] text-[#3eff7b]"><Zap size={14} /></span>
-            <span className="font-mono2 text-[10px] tracking-[0.08em] text-white">0–12 V PSU · IN SPEC</span>
-          </div>
-          <div className="absolute -right-2 md:-right-4 bottom-24 z-10 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite] [animation-delay:1.2s]">
-            <span className="w-7 h-7 grid place-items-center rounded-full bg-[rgba(62,255,123,0.12)] text-[#3eff7b]"><Cpu size={14} /></span>
-            <span className="font-mono2 text-[10px] tracking-[0.08em] text-white">BASYS3 · BITSTREAM OK</span>
-          </div>
+
 
           {/* stats */}
           <div className="mt-4 grid grid-cols-3 gap-px bg-[rgba(62,255,123,0.12)] border border-[rgba(62,255,123,0.12)] rounded-[12px] overflow-hidden">
