@@ -191,18 +191,12 @@ export function Hero() {
         {/* RIGHT — portrait + scope card */}
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="relative">
           <div className="relative rounded-[16px] overflow-hidden border border-[rgba(62,255,123,0.18)] bg-[#0b1210] card-ring">
-            <div className="grid grid-cols-[1fr_128px]">
-              <div className="p-5 md:p-6">
-                <p className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#7c9086] mb-1">EE425 · Lab 7 · Comb FIR N=13</p>
-                <p className="font-display font-semibold text-[17px] tracking-tight text-white leading-tight">Hardware matches theory,<br />null-for-null.</p>
-                <div className="mt-4 flex gap-2">
-                  <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-[rgba(62,255,123,0.3)] text-[#3eff7b] bg-[rgba(62,255,123,0.08)]">13 NULLS MAPPED</span>
-                  <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-white/10 text-[#a8bab0]">freqz ✓</span>
-                </div>
-              </div>
-              <div className="relative min-h-[160px]">
-                <img src="images/portrait.jpg" alt={`Portrait of ${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0b1210] via-transparent to-transparent" />
+            <div className="p-5 md:p-6">
+              <p className="font-mono2 text-[10px] tracking-[0.18em] uppercase text-[#7c9086] mb-1">EE425 · Lab 7 · Comb FIR N=13</p>
+              <p className="font-display font-semibold text-[17px] tracking-tight text-white leading-tight">Hardware matches theory,<br />null-for-null.</p>
+              <div className="mt-4 flex gap-2">
+                <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-[rgba(62,255,123,0.3)] text-[#3eff7b] bg-[rgba(62,255,123,0.08)]">13 NULLS MAPPED</span>
+                <span className="font-mono2 text-[10px] px-2 py-1 rounded border border-white/10 text-[#a8bab0]">freqz ✓</span>
               </div>
             </div>
             <div className="border-t border-[rgba(62,255,123,0.12)] bg-[rgba(0,0,0,0.35)] px-4 pt-2 pb-3">
@@ -215,7 +209,7 @@ export function Hero() {
           </div>
 
           {/* floating chips */}
-          <div className="absolute -left-3 md:-left-6 top-8 z-10 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite]">
+          <div className="absolute left-3 top-8 z-10 flex items-center gap-2 bg-[#0b1210]/95 backdrop-blur border border-white/10 rounded-full pl-2 pr-3 py-1.5 shadow-xl animate-[float_7s_ease-in-out_infinite]">
             <span className="w-7 h-7 grid place-items-center rounded-full bg-[rgba(62,255,123,0.12)] text-[#3eff7b]"><Zap size={14} /></span>
             <span className="font-mono2 text-[10px] tracking-[0.08em] text-white">0–12 V PSU · IN SPEC</span>
           </div>
