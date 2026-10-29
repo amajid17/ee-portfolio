@@ -162,7 +162,7 @@ export function Hero() {
           </motion.div>
 
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="mt-4 max-w-[52ch] text-[15px] leading-[1.75] text-[#a8bab0]">
-            Fourth-year EE at <span className="text-white font-medium">CCNY</span> focused on analog + embedded. I take designs from hand calc → simulation → bench, and I ship software people actually use — offline-first, no backend.
+            Fourth-year EE at <span className="text-white font-medium">CCNY</span>, focused on analog and embedded. Hand calc, simulate, build, measure. I also ship software I actually use: works without a server, built for real constraints.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.34 }} className="mt-8 flex flex-wrap gap-3">
@@ -173,7 +173,7 @@ export function Hero() {
               Get in touch <ArrowUpRight size={15} />
             </a>
             <a href="#senior-design" className="inline-flex items-center gap-2 text-[#a8bab0] hover:text-white font-mono2 text-[12px] tracking-[0.08em] uppercase px-2 py-3.5 transition-colors">
-              <Activity size={14} className="text-[#3eff7b]" /> SPECTRA '26–'27
+              <Activity size={14} className="text-[#3eff7b]" /> SenseGuard '26–'27
             </a>
           </motion.div>
 
@@ -188,7 +188,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — portrait + scope card */}
+        {/* RIGHT — scope card + stats */}
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} className="relative">
           <div className="relative rounded-[16px] overflow-hidden border border-[rgba(62,255,123,0.18)] bg-[#0b1210] card-ring">
             <div className="p-5 md:p-6">
@@ -208,13 +208,11 @@ export function Hero() {
             </div>
           </div>
 
-
-
           {/* stats */}
           <div className="mt-4 grid grid-cols-3 gap-px bg-[rgba(62,255,123,0.12)] border border-[rgba(62,255,123,0.12)] rounded-[12px] overflow-hidden">
             {[
               ["7", "bench-verified builds"],
-              ["3", "apps shipped & live"],
+              ["4", "apps shipped & live"],
               ["13", "filter nulls proven"],
             ].map(([v, l]) => (
               <div key={l} className="bg-[#0b1210] px-4 py-4 text-center">
