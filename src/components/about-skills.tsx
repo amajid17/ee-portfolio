@@ -34,8 +34,8 @@ export function About() {
 
             <div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
               <p>I do the full loop — hand calc the bias network, run it in LTspice, build it on the breadboard, then figure out why the bench reading doesn't match. <span className="text-white font-medium">That gap is where most of the learning happens.</span></p>
-              <p>Fourth-year EE at CCNY, working through analog, digital, and DSP coursework. Currently deep in senior design: <span className="text-white">SPECTRA</span>, a Wi-Fi CSI sensing system that tries to diagnose its own measurement faults and recover without someone resetting it manually.</p>
-              <p>I also build software I actually use. <span className="text-white">Three shipped apps</span>: a Quran reader on iOS and Android, and two PWAs that install on your home screen. No backend, no account, works offline from day one.</p>
+              <p>Fourth-year EE at CCNY, working through analog, digital, and DSP coursework. Currently deep in senior design: <span className="text-white">SenseGuard</span>, a Wi-Fi CSI sensing system that tries to diagnose its own measurement faults and recover without someone resetting it manually.</p>
+              <p>I also build software I actually use. <span className="text-white">Four shipped apps</span>: a Quran reader on Android, two installable PWAs, and an Android time clock I built for my workplace because the cloud one stopped working whenever the Wi-Fi did.</p>
             </div>
 
             {/* focus areas */}
@@ -61,8 +61,8 @@ export function About() {
 
           {/* side card */}
           <Reveal delay={0.12} className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] overflow-hidden card-ring lg:sticky lg:top-[90px] lg:max-h-[calc(100vh-120px)]">
-            <div className="relative h-[320px] overflow-hidden">
-              <img src="images/portrait.jpg" alt={`${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" />
+            <div className="relative h-[320px] overflow-hidden bg-[#0b1210]">
+              <img src="images/portrait.jpg" alt={`${PROFILE.first} ${PROFILE.last}`} className="absolute inset-0 w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1210] via-transparent to-transparent" />
               <div className="absolute top-4 left-4 flex gap-2">
                 <span className="font-mono2 text-[10px] tracking-[0.1em] uppercase bg-black/60 backdrop-blur border border-[rgba(62,255,123,0.3)] text-[#3eff7b] rounded-full px-3 py-1.5">Class of 2027</span>
