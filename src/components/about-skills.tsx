@@ -17,34 +17,58 @@ export function About() {
           num="01 · ABOUT"
           title="Engineer first, builder always."
           blurb="Fourth-year EE at CCNY. I work across analog, embedded, and DSP. I write down where the sim disagrees with the bench, not just when they match."
-          right={<a href={`mailto:${PROFILE.email}`} className="hidden md:inline-flex items-center gap-1.5 font-mono2 text-[11px] tracking-[0.1em] uppercase text-[#3eff7b] border border-[rgba(62,255,123,0.3)] rounded-full px-4 py-2 hover:bg-[rgba(62,255,123,0.1)] transition-colors">References on request <ArrowUpRight size={12} /></a>}
         />
 
         <div className="grid lg:grid-cols-[1fr_360px] gap-6 items-start">
           {/* main narrative */}
           <Reveal className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] p-7 md:p-10 card-ring">
             <div className="flex items-center gap-3 mb-6">
-              <span className="w-10 h-10 rounded-[10px] bg-[rgba(62,255,123,0.1)] border border-[rgba(62,255,123,0.25)] grid place-items-center text-[#3eff7b]"><GraduationCap size={18} /></span>
+              <span className="w-10 h-10 rounded-[10px] bg-[rgba(62,255,123,0.1)] border border-[rgba(62,255,123,0.25)] grid place-items-center text-[#3eff7b]">
+                <GraduationCap size={18} />
+              </span>
               <div>
-                <p className="font-display font-semibold text-white leading-tight">{PROFILE.degree}</p>
-                <p className="font-mono2 text-[11px] text-[#7c9086] tracking-[0.06em]">{PROFILE.school} · {PROFILE.grad}</p>
+                <p className="font-display font-semibold text-white leading-tight">
+                  {PROFILE.degree}
+                </p>
+                <p className="font-mono2 text-[11px] text-[#7c9086] tracking-[0.06em]">
+                  {PROFILE.school} · {PROFILE.grad}
+                </p>
               </div>
-              <span className="ml-auto font-mono2 text-[10px] tracking-[0.1em] uppercase text-[#3eff7b] bg-[rgba(62,255,123,0.08)] border border-[rgba(62,255,123,0.25)] rounded-full px-3 py-1">GPA on résumé</span>
             </div>
 
-            
-<div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
-  <p>
-    I'm a fourth-year Electrical Engineering student at the City College of New York (CCNY), interested in electronics, wireless systems, signal processing, and software development.</p>
-  <p>
-  I enjoy the hands-on side of engineering, from working through circuit calculations and LTspice simulations to breadboard testing and figuring out why real measurements don't always match theory.</p>
-<p>
-    I'm currently developing{" "}<span className="text-white font-medium">SenseGuard</span>, my senior design project, which explores cooperative Wi-Fi sensing using a 1TX/4RX architecture and Channel State Information (CSI). It also aims to detect, diagnose, and recover from RF synchronization faults while verifying sensing performance.</p>
-  <p>
-    Outside coursework, I've shipped{" "}<span className="text-white font-medium">four applications</span>: an Android Quran reader, two installable PWAs, and an Android time clock built for my workplace to replace manual timekeeping.</p>
-  <p>
-    I enjoy troubleshooting, experimenting, and turning ideas into working solutions.</p>
-</div>
+            <div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
+              <p>
+                I'm a fourth-year Electrical Engineering student at the City College of New York (CCNY), interested in electronics, wireless systems, signal processing, and software development.
+              </p>
+
+              <p>
+                I enjoy the hands-on side of engineering, from working through circuit calculations and LTspice simulations to breadboard testing and figuring out why real measurements don't always match theory.
+              </p>
+
+              <p>
+                I'm currently developing{" "}
+                <span className="text-white font-medium">SenseGuard</span>, my senior design project, which explores cooperative Wi-Fi sensing using a 1TX/4RX architecture and Channel State Information (CSI). It also aims to detect, diagnose, and recover from RF synchronization faults while verifying sensing performance.
+              </p>
+
+              <p>
+                Outside coursework, I've shipped{" "}
+                <span className="text-white font-medium">four applications</span>: an Android Quran reader, two installable PWAs, and an Android time clock built for my workplace to replace manual timekeeping.
+              </p>
+
+              <p>
+                I enjoy troubleshooting, experimenting, and turning ideas into working solutions.
+              </p>
+            </div>
+
+            {/* Keep your existing focus areas and remaining content here */}
+
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
             {/* focus areas */}
             <div className="mt-7 grid sm:grid-cols-3 gap-3">
               {[
