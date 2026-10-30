@@ -15,14 +15,14 @@ function PipelineDiagram() {
     <div className="rounded-[14px] border border-[rgba(62,255,123,0.2)] bg-black/50 p-5 md:p-6 overflow-hidden">
       <div className="flex items-center justify-between mb-4">
         <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#7c9086]">
-          4 TX · 1 RX · RPi 5 · USB serial
+          1 TX · 4 RX · RPi 5 · USB serial
         </p>
         <span className="flex items-center gap-1.5 font-mono2 text-[10px] text-[#3eff7b]">
           <span className="w-1.5 h-1.5 rounded-full bg-[#3eff7b] animate-pulse" /> STAGE 1–2 ACTIVE
         </span>
       </div>
 
-      <svg viewBox="0 0 580 220" className="w-full h-auto" role="img" aria-label="SPECTRA system pipeline diagram">
+      <svg viewBox="0 0 580 220" className="w-full h-auto" role="img" aria-label="SenseGuard system pipeline diagram">
         <defs>
           <marker id="arr3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
             <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(62,255,123,0.55)" />
@@ -32,50 +32,50 @@ function PipelineDiagram() {
           </marker>
         </defs>
 
-        {/* TX nodes */}
+        {/* TX node — broadcasts Wi-Fi to all RX nodes */}
+        <circle cx={35} cy={104} r={26} fill="#0e1a15" stroke="#3eff7b" strokeWidth="1.5" />
+        <circle cx={35} cy={104} r={7} fill="#3eff7b">
+          <animate attributeName="opacity" values="1;0.35;1" dur="2.2s" repeatCount="indefinite" />
+        </circle>
+        <text x={35} y={141} textAnchor="middle" fill="#a8bab0" fontSize="9"
+          fontFamily="JetBrains Mono">TX</text>
+        <text x={35} y={14} textAnchor="middle" fill="#7c9086" fontSize="8.5"
+          fontFamily="JetBrains Mono">1× TX node</text>
+
+        {/* Wi-Fi beams TX → RX nodes */}
+        {[38, 82, 126, 170].map((y, i) => (
+          <path key={i} d={`M61,104 Q110,104 130,${y}`}
+            fill="none" stroke="rgba(62,255,123,0.2)" strokeWidth="1.1" strokeDasharray="5 4">
+            <animate attributeName="stroke-dashoffset" from="18" to="0"
+              dur={`${1.3 + i * 0.18}s`} repeatCount="indefinite" />
+          </path>
+        ))}
+
+        {/* RX nodes — capture CSI, one has GPIO fault injection */}
         {[38, 82, 126, 170].map((y, i) => (
           <g key={i}>
-            <rect x={4} y={y - 14} width={62} height={28} rx="6"
+            <rect x={132} y={y - 14} width={62} height={28} rx="6"
               fill="#0b1210" stroke="rgba(62,255,123,0.4)" strokeWidth="1.2" />
-            <text x={35} y={y + 2} textAnchor="middle" fill="#3eff7b" fontSize="9"
-              fontFamily="JetBrains Mono" fontWeight="600">TX {i + 1}</text>
-            <text x={35} y={y + 12} textAnchor="middle" fill="#7c9086" fontSize="7.5"
-              fontFamily="JetBrains Mono">heartbeat</text>
-            <path d={`M66,${y} Q125,${y} 138,104`}
-              fill="none" stroke="rgba(62,255,123,0.2)" strokeWidth="1.1" strokeDasharray="5 4">
-              <animate attributeName="stroke-dashoffset" from="0" to="18"
-                dur={`${1.3 + i * 0.18}s`} repeatCount="indefinite" />
-            </path>
+            <text x={163} y={y + 2} textAnchor="middle" fill="#3eff7b" fontSize="9"
+              fontFamily="JetBrains Mono" fontWeight="600">RX {i + 1}</text>
+            <text x={163} y={y + 12} textAnchor="middle" fill="#7c9086" fontSize="7.5"
+              fontFamily="JetBrains Mono">{i === 0 ? "GPIO inj." : "CSI → RPi"}</text>
           </g>
         ))}
 
         {/* Offline node indicator */}
-        <rect x={4} y={190} width={62} height={22} rx="6"
+        <rect x={132} y={190} width={62} height={22} rx="6"
           fill="rgba(255,93,93,0.06)" stroke="rgba(255,93,93,0.3)" strokeWidth="1"
           strokeDasharray="4 3" />
-        <text x={35} y={204} textAnchor="middle" fill="#ff8a8a" fontSize="8"
-          fontFamily="JetBrains Mono">TX? offline</text>
-        <text x={35} y={14} textAnchor="middle" fill="#7c9086" fontSize="8.5"
-          fontFamily="JetBrains Mono">4× TX nodes</text>
+        <text x={163} y={204} textAnchor="middle" fill="#ff8a8a" fontSize="8"
+          fontFamily="JetBrains Mono">RX? offline</text>
+        <text x={163} y={14} textAnchor="middle" fill="#7c9086" fontSize="8.5"
+          fontFamily="JetBrains Mono">4× RX nodes</text>
 
-        {/* RX node */}
-        <circle cx={160} cy={104} r={26} fill="#0e1a15" stroke="#3eff7b" strokeWidth="1.5" />
-        <circle cx={160} cy={104} r={7} fill="#3eff7b">
-          <animate attributeName="opacity" values="1;0.35;1" dur="2.2s" repeatCount="indefinite" />
-        </circle>
-        <text x={160} y={141} textAnchor="middle" fill="#a8bab0" fontSize="9"
-          fontFamily="JetBrains Mono">RX</text>
-
-        {/* GPIO label */}
-        <rect x={100} y={162} width={120} height={20} rx="5"
-          fill="rgba(62,255,123,0.05)" stroke="rgba(62,255,123,0.18)" strokeWidth="1" />
-        <text x={160} y={175} textAnchor="middle" fill="#7c9086" fontSize="8"
-          fontFamily="JetBrains Mono">GPIO → fault profile</text>
-
-        {/* USB serial arrow */}
-        <path d="M186,104 L222,104" stroke="rgba(62,255,123,0.45)" strokeWidth="1.5"
+        {/* USB serial arrows RX → RPi */}
+        <path d="M194,104 L222,104" stroke="rgba(62,255,123,0.45)" strokeWidth="1.5"
           markerEnd="url(#arr3)" />
-        <text x={204} y={98} textAnchor="middle" fill="#7c9086" fontSize="8"
+        <text x={208} y={98} textAnchor="middle" fill="#7c9086" fontSize="8"
           fontFamily="JetBrains Mono">USB</text>
 
         {/* RPi box */}
@@ -250,7 +250,7 @@ function AILayersCard() {
           {/* LLM response */}
           <div className="rounded-[8px] border border-[rgba(168,114,255,0.2)] bg-[rgba(168,114,255,0.04)] px-4 py-3.5">
             <p className="font-mono2 text-[9px] tracking-[0.12em] uppercase text-[#c4b5fd] mb-2 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c4b5fd]" /> SPECTRA AI Assistant
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c4b5fd]" /> SenseGuard AI Assistant
             </p>
             <p className="text-[12.5px] leading-[1.7] text-[#e9f1ec]">
               "Node 3 has stopped reporting. The last heartbeat was received 8 seconds ago,
@@ -284,8 +284,8 @@ export function SeniorDesign() {
       <div className="relative max-w-[1180px] mx-auto px-5 md:px-8">
         <SectionHeading
           num="04 · SENIOR DESIGN 2026–27"
-          title="SPECTRA — cooperative Wi-Fi sensing with AI-based fault diagnosis and recovery."
-          blurb="Four ESP32-S3 transmitters, one receiver, a Raspberry Pi 5. The system tries to tell the difference between a node that's offline, a communication failure, and a signal fault it can actually fix. Still being built. Nothing here is a claimed result."
+          title="SenseGuard — cooperative Wi-Fi sensing with AI-based fault diagnosis and recovery."
+          blurb="One transmitter, four receivers, a Raspberry Pi 5. Separate Tx–Rx paths form a multistatic arrangement whose observations are fused by a common processor. The system tries to detect, diagnose, and recover from measurement faults — with an LLM explaining what happened. Still being built. Nothing here is a claimed result."
           right={
             <span className="font-mono2 text-[10px] tracking-[0.12em] uppercase bg-[rgba(62,255,123,0.12)] text-[#3eff7b] border border-[rgba(62,255,123,0.3)] font-semibold rounded-full px-3.5 py-1.5">
               Active · Stage 1–2
@@ -302,30 +302,28 @@ export function SeniorDesign() {
             <Reveal className="rounded-[16px] border border-white/[0.08] bg-[#0b1210] p-6 md:p-8 card-ring">
               <p className="font-mono2 text-[10px] tracking-[0.16em] uppercase text-[#3eff7b] mb-3">What it is</p>
               <p className="text-[14.5px] leading-[1.75] text-[#a8bab0]">
-                Four <span className="text-white font-medium">ESP32-S3 transmitters</span> send
-                sequenced packets to one receiver. The receiver captures Channel State Information
-                and, under GPIO switch control, injects a selected synthetic measurement impairment
-                into the stream. That goes over USB serial to a{" "}
-                <span className="text-white font-medium">Raspberry Pi 5</span> running two parallel
-                tracks: a <span className="text-white font-medium">health monitor</span> watching
-                for offline nodes and hardware faults, and a{" "}
+                One <span className="text-white font-medium">ESP32-S3 transmitter</span> sends
+                sequenced Wi-Fi packets to four receivers. Each receiver captures Channel State
+                Information; one also applies a GPIO-selected synthetic measurement impairment
+                under controlled conditions. All four streams go over USB serial to a{" "}
+                <span className="text-white font-medium">Raspberry Pi 5</span> that fuses the
+                observations. Two parallel tracks run: a{" "}
+                <span className="text-white font-medium">health monitor</span> watching for offline
+                nodes and hardware faults, and a{" "}
                 <span className="text-white font-medium">signal pipeline</span> doing preprocessing,
                 1D CNN fault classification, correction, and fresh-data verification. A{" "}
                 <span className="text-white font-medium">React + FastAPI dashboard</span> shows
-                both tracks in real time.
+                sensing results, fault diagnosis, corrective action, and LLM explanation.
               </p>
 
               {/* Honest scope note */}
               <div className="mt-5 rounded-[10px] border border-white/[0.07] bg-white/[0.02] px-4 py-3.5">
                 <p className="font-mono2 text-[10px] tracking-[0.14em] uppercase text-[#7c9086] mb-1.5">Architectural scope</p>
                 <p className="text-[13px] leading-[1.65] text-[#7c9086]">
-                  One receiver means per-link fault analysis, not a fully distributed
-                  multi-receiver system. The fault injector applies{" "}
+                  Node count is budget-dependent — most likely 1 TX and 4 RX, with 3–5 active nodes evaluated if resources permit. IEEE 802.11bf guides sensing coordination and measurement reporting; the design will evaluate whether the selected hardware and firmware can support its required procedures. The fault injector applies{" "}
                   <span className="text-[#a8bab0]">software-level</span> measurement
                   impairments — it does not retune the radio hardware. Simulated phase drift
-                  is not proof that real RF oscillator errors have been corrected. Hardware
-                  recovery (restoring power, reconnecting a node) is tracked separately from
-                  software correction of measurement impairments.
+                  is not proof that real RF oscillator errors have been corrected.
                 </p>
               </div>
 
@@ -402,21 +400,24 @@ export function SeniorDesign() {
                     How this gets evaluated
                   </p>
                   <p className="font-display font-semibold text-[17px] text-white leading-snug mb-2">
-                    Three methods. Same data. Held-out sessions.
+                    Three methods. Same data. Moving-target demonstration.
                   </p>
                   <p className="text-[13.5px] text-[#a8bab0] leading-relaxed mb-3">
                     Fixed preprocessing, rule-based diagnosis, and AI-assisted selection are
                     compared on the same recordings, injected conditions, and test partitions.
-                    Recovery is measured against the healthy baseline on fresh data — not
-                    relative to the impaired state. No result is claimed until it appears on
-                    the independent test set.
+                    A moving-target demonstration will make fault and recovery effects visible
+                    before, during, and after each intervention. The dashboard distinguishes
+                    measured values, model-based calculations, and unavailable results.
+                    No result is claimed until it appears on the independent test set.
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {[
                       "Movement F1 · false-alarm rate",
                       "Fault macro-F1 · confusion matrix",
                       "Recovery Δ vs healthy baseline",
-                      "False-recovery rate",
+                      "MSE · PSLR · CRB",
+                      "Spectral efficiency (SE)",
+                      "BER · EVM",
                       "Packet delivery ratio",
                       "Inference latency on RPi",
                     ].map((t) => (
@@ -443,13 +444,13 @@ export function SeniorDesign() {
                 {(
                   [
                     ["S1–S2", "CSI acquisition + 4-TX operation",
-                      "ESP-IDF firmware, USB serial pipeline, sender IDs, heartbeats, transmission schedule", true],
+                      "ESP-IDF firmware, USB serial pipeline from 4 RX nodes, receiver IDs, heartbeats, coordinated transmission schedule", true],
                     ["S3–S4", "Movement detection + fault injection",
                       "Non-AI baseline detector, GPIO switch-controlled impairments, labels isolated from model inputs", false],
                     ["S5–S6", "Health monitor + CNN + correction",
                       "Node fault taxonomy, 1D CNN training, correction engine, fresh-data verify loop", false],
                     ["S7–S8", "Dashboard, deployment + custom PCBs",
-                      "React + FastAPI on RPi 5, then 4 TX + 1 RX carrier PCBs after bench prototype validates", false],
+                      "React + FastAPI on RPi 5, then 1 TX carrier + 4 RX carrier PCBs after bench prototype validates", false],
                   ] as [string, string, string, boolean][]
                 ).map(([q, t, d, active], i) => (
                   <div key={q} className="flex gap-4">
@@ -484,7 +485,7 @@ export function SeniorDesign() {
 
               <div className="mt-4 flex items-start gap-2 font-mono2 text-[11px] text-[#7c9086]">
                 <Activity size={13} className="text-[#3eff7b] shrink-0 mt-0.5" />
-                <span>Custom PCBs — 4 TX carrier + 1 RX carrier — designed only after bench prototype validates firmware and injection mechanism.</span>
+                <span>Custom PCBs — 1 TX carrier + 4 RX carriers — designed only after bench prototype validates firmware and injection mechanism.</span>
               </div>
             </Reveal>
           </div>
@@ -543,7 +544,7 @@ export function Contact() {
               Have a bench<br />I can learn on?
             </h3>
             <p className="text-[14.5px] text-[#a8bab0] leading-relaxed mb-8 max-w-[44ch]">
-              Internships, lab roles, feedback on SPECTRA. If it involves a scope or a soldering iron, I'm interested.
+              Internships, lab roles, feedback on SenseGuard. If it involves a scope or a soldering iron, I'm interested.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
