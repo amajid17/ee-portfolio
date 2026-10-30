@@ -34,7 +34,7 @@ export function About() {
 
             <div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
               <p>I do the full loop — hand calc the bias network, run it in LTspice, build it on the breadboard, then figure out why the bench reading doesn't match. <span className="text-white font-medium">That gap is where most of the learning happens.</span></p>
-              <p>Fourth-year EE at CCNY, working through analog, digital, and DSP coursework. Currently deep in senior design: <span className="text-white">SenseGuard</span>, a Wi-Fi CSI sensing system that tries to diagnose its own measurement faults and recover without someone resetting it manually.</p>
+              <p>Fourth-year EE at CCNY, working through analog, digital, and DSP coursework. Currently deep in senior design: <span className="text-white">SenseGuard</span>, a cooperative Wi-Fi sensing system using a multistatic 1TX/4RX arrangement that detects, diagnoses, and recovers from measurement faults — demonstrated on a moving target.</p>
               <p>I also build software I actually use. <span className="text-white">Four shipped apps</span>: a Quran reader on Android, two installable PWAs, and an Android time clock I built for my workplace because the cloud one stopped working whenever the Wi-Fi did.</p>
             </div>
 
