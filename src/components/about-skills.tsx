@@ -32,12 +32,19 @@ export function About() {
               <span className="ml-auto font-mono2 text-[10px] tracking-[0.1em] uppercase text-[#3eff7b] bg-[rgba(62,255,123,0.08)] border border-[rgba(62,255,123,0.25)] rounded-full px-3 py-1">GPA on résumé</span>
             </div>
 
-            <div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
-              <p>I do the full loop — hand calc the bias network, run it in LTspice, build it on the breadboard, then figure out why the bench reading doesn't match. <span className="text-white font-medium">That gap is where most of the learning happens.</span></p>
-              <p>Fourth-year EE at CCNY, working through analog, digital, and DSP coursework. Currently deep in senior design: <span className="text-white">SenseGuard</span>, a cooperative Wi-Fi sensing system using a multistatic 1TX/4RX arrangement that detects, diagnoses, and recovers from measurement faults — demonstrated on a moving target.</p>
-              <p>I also build software I actually use. <span className="text-white">Four shipped apps</span>: a Quran reader on Android, two installable PWAs, and an Android time clock I built for my workplace because the cloud one stopped working whenever the Wi-Fi did.</p>
-            </div>
-
+            
+<div className="space-y-4 text-[15px] leading-[1.8] text-[#a8bab0]">
+  <p>
+    I'm a fourth-year Electrical Engineering student at the City College of New York (CCNY), interested in electronics, wireless systems, signal processing, and software development.</p>
+  <p>
+  I enjoy the hands-on side of engineering, from working through circuit calculations and LTspice simulations to breadboard testing and figuring out why real measurements don't always match theory.</p>
+<p>
+    I'm currently developing{" "}<span className="text-white font-medium">SenseGuard</span>, my senior design project, which explores cooperative Wi-Fi sensing using a 1TX/4RX architecture and Channel State Information (CSI). It also aims to detect, diagnose, and recover from RF synchronization faults while verifying sensing performance.</p>
+  <p>
+    Outside coursework, I've shipped{" "}<span className="text-white font-medium">four applications</span>: an Android Quran reader, two installable PWAs, and an Android time clock built for my workplace to replace manual timekeeping.</p>
+  <p>
+    I enjoy troubleshooting, experimenting, and turning ideas into working solutions.</p>
+</div>
             {/* focus areas */}
             <div className="mt-7 grid sm:grid-cols-3 gap-3">
               {[
